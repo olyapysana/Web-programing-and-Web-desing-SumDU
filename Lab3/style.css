@@ -74,7 +74,7 @@ body {
 
 .task2-container div {
     position: absolute;
-    width: 220px;
+    width: 240px;
     height: 130px;
     border: 2px solid #000000;
     padding: 15px;
@@ -86,8 +86,8 @@ body {
 }
 
 .t2-block1 {
-    top: 20px;
-    left: 150px;
+    top: 30px;
+    left: 20px;
     background-color: #4583e6;
     color: #ffffff;
     z-index: 1;
@@ -95,7 +95,7 @@ body {
 
 .t2-block2 {
     top: 0px;
-    left: 320px;
+    left: 210px;
     background-color: #2e9e46;
     color: #ffffff;
     z-index: 3;
@@ -103,7 +103,7 @@ body {
 
 .t2-block3 {
     top: 40px;
-    left: 490px;
+    left: 420px;
     background-color: #7bc0de;
     color: #000000;
     z-index: 2;

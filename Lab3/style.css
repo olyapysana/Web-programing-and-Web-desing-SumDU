@@ -65,15 +65,16 @@ body {
 
 
 /* --- Стилі Завдання 2 --- */
+/* --- Стилі для ЗАВДАННЯ 2 --- */
 .task2-container {
     position: relative;
     width: 100%;
-    height: 250px;
+    height: 220px;
 }
 
 .task2-container div {
     position: absolute;
-    width: 200px;
+    width: 220px;
     height: 130px;
     border: 2px solid #000000;
     padding: 15px;
@@ -85,28 +86,28 @@ body {
 }
 
 .t2-block1 {
-    top: 30px;
-    left: 100px;
+    top: 20px;
+    left: 150px;
     background-color: #4583e6;
     color: #ffffff;
     z-index: 1;
 }
+
 .t2-block2 {
     top: 0px;
-    left: 280px;
+    left: 320px;
     background-color: #2e9e46;
     color: #ffffff;
     z-index: 3;
 }
 
 .t2-block3 {
-    top: 50px;
-    left: 480px;
+    top: 40px;
+    left: 490px;
     background-color: #7bc0de;
     color: #000000;
     z-index: 2;
 }
-
 
 /* --- Стилі Завдання 3 --- */
 .task3-container {

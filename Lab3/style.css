@@ -68,13 +68,13 @@ body {
 .task2-container {
     position: relative;
     width: 100%;
-    height: 220px;
+    height: 250px;
 }
 
 .task2-container div {
     position: absolute;
-    width: 180px;
-    height: 120px;
+    width: 200px;
+    height: 130px;
     border: 2px solid #000000;
     padding: 15px;
     box-sizing: border-box;
@@ -85,24 +85,23 @@ body {
 }
 
 .t2-block1 {
-    top: 40px;
-    left: 150px;
+    top: 30px;
+    left: 100px;
     background-color: #4583e6;
     color: #ffffff;
     z-index: 1;
 }
-
 .t2-block2 {
-    top: 10px;
-    left: 350px;
+    top: 0px;
+    left: 280px;
     background-color: #2e9e46;
     color: #ffffff;
     z-index: 3;
 }
 
 .t2-block3 {
-    top: 70px;
-    left: 550px;
+    top: 50px;
+    left: 480px;
     background-color: #7bc0de;
     color: #000000;
     z-index: 2;

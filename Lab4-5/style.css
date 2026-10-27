@@ -14,56 +14,105 @@ html, body {
 .main {
     min-height: 100%;
     position: relative;
-    background-color: rgb(220, 224, 201); /* Світло-оливковий / бежевий фон */
-    padding-bottom: 50px; /* Відступ, щоб футер не перекривав текст */
+    background-color: rgb(240, 242, 245); /* Сучасний світло-сірий фон */
+    padding-bottom: 60px; /* Відступ знизу, щоб контент не перекривався футером */
 }
 
 /* Шапка сайту */
 .header {
-    height: 150px;
+    height: 180px;
     margin: 5px 0;
     text-align: center;
-    line-height: 150px; /* Текст по центру по вертикалі */
+    position: relative;
     background-color: rgb(30, 144, 255);
     color: #ffffff;
-    font-size: 24px;
-    font-weight: bold;
+    overflow: hidden;
+}
+
+/* Стилі для фонового зображення банера у шапці */
+.header-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.35; /* Затемнення для кращої читабельності тексту */
+}
+
+.header h1 {
+    position: relative;
+    z-index: 2;
+    line-height: 180px;
+    font-size: 28px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
 }
 
 /* Меню навігації */
 .menu {
-    background-color: #9400D3;
+    background-color: #1e3d59;
     min-height: 36px;
     font-size: 14px;
     font-weight: bold;
-    padding: 9px 0;
-    color: #ddd;
+    padding: 10px 0;
     text-align: center;
     margin: 5px 0;
 }
 
-/* Посилання в меню */
 .menu a {
     color: #ffffff;
-    margin: 0 10px;
+    margin: 0 15px;
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
-/* Зміна кольору посилання при наведенні */
 .menu a:hover {
-    color: #bbb;
+    color: #17b978;
 }
 
 /* Основний контент */
 .content {
-    padding: 50px;
-    font-size: 16px;
-    line-height: 1.6;
-    color: #333;
+    padding: 30px 50px;
 }
 
-/* Підвал (Footer) */
+/* Стилі для рядів та блоків з фотографіями (Flexbox) */
+.photorow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.photo {
+    background-color: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    width: 30%;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.photo:hover {
+    transform: translateY(-5px); /* Ефект легкого підняття при наведенні */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.photo img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.photo p {
+    font-size: 15px;
+    font-weight: bold;
+    color: #1e3d59;
+}
+
+/* Підвал сайту (Footer) з інформацією про розробника */
 .footer {
     height: 50px;
     position: absolute;
@@ -72,7 +121,8 @@ html, body {
     width: 100%;
     text-align: center;
     line-height: 50px;
-    background-color: #4B0082;
+    background-color: #17252a;
     color: #ffffff;
+    font-size: 14px;
     font-weight: bold;
 }

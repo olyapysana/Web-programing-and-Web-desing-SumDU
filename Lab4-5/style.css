@@ -72,42 +72,38 @@ html, body {
 
 /* Основний контент */
 .content {
-    padding: 30px 50px;
+    padding: 20px;
 }
 
 /* Стилі для рядів та блоків з фотографіями (Flexbox) */
 .photorow {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 30px;
+    justify-content: center; /* Центрування карток у ряду */
+    flex-wrap: wrap; /* Дозволяє карткам переноситися на наступний рядок, якщо мало місця */
+    gap: 15px; /* Відстань між картками */
+    margin-bottom: 20px;
 }
 
 .photo {
     background-color: #ffffff;
     border: 1px solid #dcdcdc;
     border-radius: 8px;
-    width: 30%;
+    width: 280px; /* Фіксована зручна ширина для кожної картки */
     text-align: center;
     padding: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.photo:hover {
-    transform: translateY(-5px); /* Ефект легкого підняття при наведенні */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
 .photo img {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
+    height: 180px;
+    object-fit: cover; /* Або contain, якщо хочеш бачити всю фотографію повністю */
     border-radius: 4px;
     margin-bottom: 10px;
 }
 
 .photo p {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: bold;
     color: #1e3d59;
 }

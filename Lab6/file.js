@@ -17,7 +17,6 @@
             { title: "Мартін Іден", genre: "роман" }
         ];
 
-        // 1. За допомогою confirm() запитуємо згоду користувача
         let isReady = confirm("Бажаєте пройти опитування щодо жанрів книг (3 питання)?");
 
         if (isReady) {
@@ -27,7 +26,7 @@
             for (let i = 0; i < books.length; i++) {
                 let currentBook = books[i];
 
-                // 2. Отримуємо відповідь через prompt()
+                // Отримуємо відповідь через prompt()
                 let userInput = prompt(`Питання ${i + 1} з 3:\nВкажіть жанр для книги "${currentBook.title}":`);
 
                 // Перевірка на скасування або порожній ввід
@@ -36,10 +35,10 @@
                     continue;
                 }
 
-                // Нормалізація введених даних (видалення пробілів та приведення до нижнього регістру)
+                // Нормалізація введених даних 
                 let formattedInput = userInput.trim().toLowerCase();
 
-                // 3. Перевірка правильності відповіді та виведення через alert()
+                // Перевірка правильності відповіді та виведення через alert()
                 if (formattedInput === currentBook.genre) {
                     alert(`Вірно! Жанр книги "${currentBook.title}" — справді ${currentBook.genre}.`);
                     correctAnswersCount++;

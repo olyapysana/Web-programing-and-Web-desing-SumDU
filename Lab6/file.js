@@ -6,6 +6,7 @@ const books = [
 ];
 
 let isReady = confirm("Бажаєте пройти опитування щодо жанрів книг (3 питання)?");
+let surveyResultDiv = document.getElementById("survey-result");
 
 if (isReady) {
     let correctAnswersCount = 0;
@@ -30,19 +31,16 @@ if (isReady) {
     }
 
     alert(`Опитування завершено! Ваш результат: ${correctAnswersCount} з ${books.length} правильних відповідей.`);
-    
-    // Виводимо результати опитування в кінець сторінки або у відповідний блок
-    document.write(`<h3>Результати опитування:</h3>`);
-    document.write(`<p>Ви відповіли правильно на <strong>${correctAnswersCount}</strong> з <strong>${books.length}</strong> питань.</p>`);
+    surveyResultDiv.innerHTML = `<h3>Результати опитування:</h3><p>Ви відповіли правильно на <strong>${correctAnswersCount}</strong> з <strong>${books.length}</strong> питань.</p>`;
 } else {
     alert("Ви відмовилися від проходження опитування.");
-    document.write("<p>Опитування скасовано користувачем.</p>");
+    surveyResultDiv.innerHTML = "<p>Опитування скасовано користувачем.</p>";
 }
 
 
 // --- ЗАВДАННЯ 2: Випадкова кількість блоків (від 6 до 10) ---
 let blocksCount = Math.floor(Math.random() * (10 - 6 + 1)) + 6;
-let blocksContainer = document.querySelector(".container-blocks");
+let blocksContainer = document.getElementById("blocks-container");
 
 for (let i = 0; i < blocksCount; i++) {
     let block = document.createElement("div");
@@ -52,7 +50,7 @@ for (let i = 0; i < blocksCount; i++) {
 }
 
 
-// --- ЗАВДАННЯ 3 Таблиця товарів із розрахунком суми ---
+// --- ЗАВДАННЯ 3: Таблиця товарів із розрахунком суми ---
 const products = [
     { code: "101", name: "Хліб", price: 40, quantity: 4 },
     { code: "102", name: "Ковбаса", price: 120, quantity: 6 },
@@ -62,7 +60,7 @@ const products = [
 ];
 
 let grandTotal = 0;
-let tableContainer = document.querySelector(".table-container");
+let tableContainer = document.getElementById("table-container");
 
 let tableHTML = '<table class="goods-table">';
 tableHTML += '<tr><th>Код</th><th>Найменування товару</th><th>Ціна за од. (грн)</th><th>Кількість</th><th>Сума (грн)</th></tr>';

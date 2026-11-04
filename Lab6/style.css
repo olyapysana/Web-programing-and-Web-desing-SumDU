@@ -19,7 +19,7 @@ hr {
     border-top: 2px solid #e2e8f0;
 }
 
-/* --- Стилі для Завдання 2 (Вертикальні блоки) --- */
+/* --- Стилі для Завдання 2 --- */
 .container-blocks {
     display: flex;
     justify-content: center;

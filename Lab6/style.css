@@ -1,4 +1,3 @@
-/* Загальні стилі сторінки */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #f4f7f6;
@@ -47,7 +46,7 @@ hr {
     transform: scaleY(1.02);
 }
 
-/* --- Стилі для Завдання 3 (Таблиця товарів) --- */
+/* --- Стилі для Завдання 3  --- */
 .table-container {
     display: flex;
     justify-content: center;

@@ -1,1 +1,119 @@
-hello
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторна робота №6 — Варіант 12</title>
+    <!-- Підключення окремого файлу стилів -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Лабораторна робота №6</h1>
+    <h2>Варіант 12</h2>
+
+    <!-- Скрипт для Завдання 1 (Опитування про книги) -->
+    <script>
+        const books = [
+            { title: "Гаррі Поттер", genre: "фентезі" },
+            { title: "Шерлок Холмс", genre: "детектив" },
+            { title: "Мартін Іден", genre: "роман" }
+        ];
+
+        let isReady = confirm("Бажаєте пройти опитування щодо жанрів книг (3 питання)?");
+
+        if (isReady) {
+            let correctAnswersCount = 0;
+
+            for (let i = 0; i < books.length; i++) {
+                let currentBook = books[i];
+                let userInput = prompt(`Питання ${i + 1} з 3:\nВкажіть жанр для книги "${currentBook.title}":`);
+
+                if (userInput === null || userInput.trim() === "") {
+                    alert(`Ви не ввели відповідь для книги "${currentBook.title}". Питання пропущено.`);
+                    continue;
+                }
+
+                let formattedInput = userInput.trim().toLowerCase();
+
+                if (formattedInput === currentBook.genre) {
+                    alert(`Вірно! Жанр книги "${currentBook.title}" — справді ${currentBook.genre}.`);
+                    correctAnswersCount++;
+                } else {
+                    alert(`Невірно! Для книги "${currentBook.title}" правильний жанр — ${currentBook.genre}. (Ви вказали: "${userInput.trim()}")`);
+                }
+            }
+
+            alert(`Опитування завершено! Ваш результат: ${correctAnswersCount} з ${books.length} правильних відповідей.`);
+            document.write(`<h3>Результати опитування:</h3>`);
+            document.write(`<p>Ви відповіли правильно на <strong>${correctAnswersCount}</strong> з <strong>${books.length}</strong> питань.</p>`);
+        } else {
+            alert("Ви відмовилися від проходження опитування.");
+            document.write("<p>Опитування скасовано користувачем.</p>");
+        }
+    </script>
+
+    <hr>
+
+    <!-- Завдання 2. Випадкова кількість блоків від 6 до 10 -->
+    <h2>Завдання 2. Випадкова кількість блоків (від 6 до 10)</h2>
+    <div class="container-blocks">
+        <script>
+            let blocksCount = Math.floor(Math.random() * (10 - 6 + 1)) + 6;
+
+            for (let i = 0; i < blocksCount; i++) {
+                document.write('<div class="dynamic-block" title="Блок №' + (i + 1) + '"></div>');
+            }
+        </script>
+    </div>
+
+    <hr>
+
+    <!-- Завдання 3. Таблиця товарів -->
+    <h2>Завдання 3. Таблиця товарів із розрахунком суми та підсумку</h2>
+    <div class="table-container">
+        <script>
+            const products = [
+                { code: "101", name: "Зубна щітка ортодонтична", price: 120, quantity: 4 },
+                { code: "102", name: "Віск для брекетів (набір)", price: 85, quantity: 10 },
+                { code: "103", name: "Міжзубні йоржики (пачка)", price: 160, quantity: 3 },
+                { code: "104", name: "Суперфлос для брекетів", price: 110, quantity: 5 },
+                { code: "105", name: "Дорожній набір гігієни", price: 250, quantity: 2 }
+            ];
+
+            let grandTotal = 0;
+
+            document.write('<table class="goods-table">');
+            document.write('<tr>');
+            document.write('<th>Код</th>');
+            document.write('<th>Найменування товару</th>');
+            document.write('<th>Ціна за од. (грн)</th>');
+            document.write('<th>Кількість</th>');
+            document.write('<th>Сума (грн)</th>');
+            document.write('</tr>');
+
+            for (let i = 0; i < products.length; i++) {
+                let item = products[i];
+                let itemTotal = item.price * item.quantity;
+                grandTotal += itemTotal;
+
+                document.write('<tr>');
+                document.write('<td>' + item.code + '</td>');
+                document.write('<td class="text-left">' + item.name + '</td>');
+                document.write('<td>' + item.price + '</td>');
+                document.write('<td>' + item.quantity + '</td>');
+                document.write('<td><strong>' + itemTotal + '</strong></td>');
+                document.write('</tr>');
+            }
+
+            document.write('<tr class="total-row">');
+            document.write('<td colspan="4" class="text-right">Всього до сплати:</td>');
+            document.write('<td>' + grandTotal + ' грн</td>');
+            document.write('</tr>');
+
+            document.write('</table>');
+        </script>
+    </div>
+
+</body>
+</html>

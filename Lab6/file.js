@@ -47,8 +47,6 @@
                     alert(`Невірно! Для книги "${currentBook.title}" правильний жанр — ${currentBook.genre}. (Ви вказали: "${userInput.trim()}")`);
                 }
             }
-
-            // Виведення підсумкового результату
             alert(`Опитування завершено! Ваш результат: ${correctAnswersCount} з ${books.length} правильних відповідей.`);
 
             document.write(`<h3>Результати опитування:</h3>`);

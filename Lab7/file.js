@@ -14,9 +14,19 @@ function sumOrMinus(...args) {
     }
 }
 
-console.log("sumOrMinus(1, 2, 3) =", sumOrMinus(1, 2, 3));       // 0
-console.log("sumOrMinus(2, 5, 8, 4) =", sumOrMinus(2, 5, 8, 4)); // 19
-console.log("sumOrMinus(8, 1, 2) =", sumOrMinus(8, 1, 2));       // -7
+const res1_1 = sumOrMinus(1, 2, 3);
+const res1_2 = sumOrMinus(2, 5, 8, 4);
+const res1_3 = sumOrMinus(8, 1, 2);
+
+console.log("sumOrMinus(1, 2, 3) =", res1_1);
+console.log("sumOrMinus(2, 5, 8, 4) =", res1_2);
+console.log("sumOrMinus(8, 1, 2) =", res1_3);
+
+document.getElementById("result1").innerHTML = `
+    sumOrMinus(1, 2, 3) = ${res1_1} <br>
+    sumOrMinus(2, 5, 8, 4) = ${res1_2} <br>
+    sumOrMinus(8, 1, 2) = ${res1_3}
+`;
 
 
 // --- Завдання 2 ---
@@ -27,9 +37,19 @@ function factorialRecursion(n) {
     return n * factorialRecursion(n - 1);
 }
 
-console.log("factorialRecursion(0) =", factorialRecursion(0)); // 1
-console.log("factorialRecursion(5) =", factorialRecursion(5)); // 120
-console.log("factorialRecursion(7) =", factorialRecursion(7)); // 5040
+const res2_0 = factorialRecursion(0);
+const res2_5 = factorialRecursion(5);
+const res2_7 = factorialRecursion(7);
+
+console.log("factorialRecursion(0) =", res2_0);
+console.log("factorialRecursion(5) =", res2_5);
+console.log("factorialRecursion(7) =", res2_7);
+
+document.getElementById("result2").innerHTML = `
+    factorialRecursion(0) = ${res2_0} <br>
+    factorialRecursion(5) = ${res2_5} <br>
+    factorialRecursion(7) = ${res2_7}
+`;
 
 
 // --- Завдання 3 ---
@@ -68,5 +88,13 @@ function createFibonachiMemo() {
 
 const fibonachiMemo = createFibonachiMemo();
 
-console.log("Рекурсія:", fibonachiRecursion(5), "| Кількість викликів:", numberOfRecusrionCalls);
-console.log("Мемоїзація:", fibonachiMemo(5), "| Кількість викликів:", numberOfMemoCalls);
+const fibRecResult = fibonachiRecursion(5);
+const fibMemoResult = fibonachiMemo(5);
+
+console.log("Рекурсія:", fibRecResult, "| Кількість викликів:", numberOfRecusrionCalls);
+console.log("Мемоїзація:", fibMemoResult, "| Кількість викликів:", numberOfMemoCalls);
+
+document.getElementById("result3").innerHTML = `
+    Рекурсія (для 5): ${fibRecResult} | Викликів: ${numberOfRecusrionCalls} <br>
+    Мемоїзація (для 5): ${fibMemoResult} | Викликів: ${numberOfMemoCalls}
+`;

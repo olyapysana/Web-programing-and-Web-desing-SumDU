@@ -1,5 +1,5 @@
 // ==========================================
-// ЗАВДАННЯ 1
+// ЗАВДАННЯ 1 (Введення чисел через кому в одне віконце)
 // ==========================================
 function operation(arr) {
     let manipulation = "";
@@ -21,36 +21,32 @@ function operation(arr) {
 }
 
 function runTask1() {
-    let parameters = [];
-    let entry;
-
-    while (true) {
-        entry = prompt("Завдання 1\nВведіть число:\n(Введіть '*', щоб завершити введення)");
-
-        if (entry === null || entry === "*") {
-            break;
-        }
-
-        let number = parseFloat(entry.trim().replace(",", "."));
-        if (isNaN(number)) {
-            alert("Увага: некоректне значення! Введіть число.");
-            continue;
-        }
-
-        parameters.push(number);
-    }
-
+    let input = prompt("Завдання 1\nВведіть числа через кому (наприклад: 2, 5, 8, 4):");
     let container = document.getElementById("resultTask1");
 
-    if (parameters.length < 2) {
-        container.innerHTML = "<b>Помилка:</b> Потрібно ввести мінімум 2 числа!";
-        alert("Потрібно ввести щонайменше 2 числа.");
+    if (!input || input.trim() === "") {
         return;
     }
 
-    let calc = operation(parameters);
+    // Розбиваємо рядок за комою та перетворюємо на числа
+    let arr = input.split(",").map(item => parseFloat(item.trim().replace(",", ".")));
+
+    // Перевіряємо, чи всі елементи є числами
+    if (arr.some(isNaN)) {
+        alert("Помилка: одне або кілька значень не є числами!");
+        container.innerHTML = "<b>Помилка:</b> Некоректне введення даних.";
+        return;
+    }
+
+    if (arr.length < 2) {
+        alert("Потрібно ввести щонайменше 2 числа!");
+        container.innerHTML = "<b>Помилка:</b> Введено менше 2 чисел.";
+        return;
+    }
+
+    let calc = operation(arr);
     container.innerHTML = `
-        <b>Введені числа:</b> ${parameters.join(", ")}<br>
+        <b>Введені числа:</b> ${arr.join(", ")}<br>
         <b>Операція:</b> ${calc.name}<br>
         <b>Результат:</b> ${calc.res}
     `;
@@ -58,7 +54,7 @@ function runTask1() {
 
 
 // ==========================================
-// ЗАВДАННЯ 2
+// ЗАВДАННЯ 2 (Факторіал через рекурсію)
 // ==========================================
 function factorialRecursion(n) {
     if (n === 0 || n === 1) {
@@ -69,13 +65,13 @@ function factorialRecursion(n) {
 
 function runTask2() {
     let inputString = prompt("Завдання 2\nВведіть ціле невід'ємне число для факторіалу:");
+    let container = document.getElementById("resultTask2");
 
     if (inputString === null || inputString === "") {
         return;
     }
 
-    let n = parseInt(inputString.trim().replace(",", "."));
-    let container = document.getElementById("resultTask2");
+    let n = parseInt(inputString.trim());
 
     if (isNaN(n) || n < 0) {
         alert("Увага: введено некоректне або від'ємне число!");
@@ -92,7 +88,7 @@ function runTask2() {
 
 
 // ==========================================
-// ЗАВДАННЯ 3
+// ЗАВДАННЯ 3 (Числа Фібоначчі: рекурсія проти мемоїзації)
 // ==========================================
 let numberOfRecusrionCalls = 0;
 let numberOfMemoCalls = 0;
@@ -123,13 +119,13 @@ function createFibonachiMemo() {
 
 function runTask3() {
     let inputString = prompt("Завдання 3\nВведіть номер числа Фібоначчі (наприклад, 5 або 10):");
+    let container = document.getElementById("resultTask3");
 
     if (inputString === null || inputString === "") {
         return;
     }
 
     let number = parseInt(inputString.trim());
-    let container = document.getElementById("resultTask3");
 
     if (isNaN(number) || number < 0) {
         alert("Увага: введено некоректне число!");

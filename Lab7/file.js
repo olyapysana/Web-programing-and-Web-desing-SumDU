@@ -1,12 +1,8 @@
-// ==========================================
-// ЗАВДАННЯ 1: Сумування або віднімання
-// ==========================================
+// ЗАВДАННЯ 1 (Сумування або віднімання)
 function sumOrMinus(...args) {
     if (args.length % 2 === 0) {
-        // Парна кількість: сумуємо всі елементи
         return args.reduce((acc, val) => acc + val, 0);
     } else {
-        // Непарна кількість: віднімаємо від останнього до першого
         let result = args[args.length - 1];
         for (let i = args.length - 2; i >= 0; i--) {
             result -= args[i];
@@ -23,7 +19,6 @@ function runTask1() {
         return;
     }
 
-    // Розбиваємо рядок за комою у масив чисел
     let arr = input.split(",").map(item => parseFloat(item.trim().replace(",", ".")));
 
     if (arr.some(isNaN)) {
@@ -47,9 +42,8 @@ function runTask1() {
         <b>Результат:</b> ${result}
     `;
 }
-// ==========================================
+
 // ЗАВДАННЯ 2 (Факторіал через рекурсію)
-// ==========================================
 function factorialRecursion(n) {
     if (n === 0 || n === 1) {
         return 1;
@@ -81,9 +75,7 @@ function runTask2() {
 }
 
 
-// ==========================================
-// ЗАВДАННЯ 3 (Числа Фібоначчі: рекурсія проти мемоїзації)
-// ==========================================
+// ЗАВДАННЯ 3 (Числа Фібоначчі)
 let numberOfRecusrionCalls = 0;
 let numberOfMemoCalls = 0;
 
@@ -127,7 +119,6 @@ function runTask3() {
         return;
     }
 
-    // Скидаємо лічильники викликів перед запуском
     numberOfRecusrionCalls = 0;
     numberOfMemoCalls = 0;
 

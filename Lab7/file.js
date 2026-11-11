@@ -12,7 +12,7 @@ function sumOrMinus(...args) {
 }
 
 function runTask1() {
-    let input = prompt("Завдання 1\nВведіть числа через кому (наприклад: 1, 2, 3 або 2, 5, 8, 4):");
+    let input = prompt("Завдання 1\nВведіть числа через кому (наприклад: 1, 2, 3):");
     let container = document.getElementById("resultTask1");
 
     if (!input || input.trim() === "") {
@@ -23,13 +23,13 @@ function runTask1() {
 
     if (arr.some(isNaN)) {
         alert("Помилка: одне або кілька значень не є числами!");
-        container.innerHTML = "<b>Помилка:</b> Некоректне введення даних.";
+        container.innerHTML = "<b>Помилка:</b> Некоректне введення даних";
         return;
     }
 
     if (arr.length < 2) {
         alert("Потрібно ввести щонайменше 2 числа!");
-        container.innerHTML = "<b>Помилка:</b> Введено менше 2 чисел.";
+        container.innerHTML = "<b>Помилка:</b> Введено менше 2 чисел";
         return;
     }
 
@@ -63,7 +63,7 @@ function runTask2() {
 
     if (isNaN(n) || n < 0) {
         alert("Увага: введено некоректне або від'ємне число!");
-        container.innerHTML = "<b>Помилка:</b> Введіть невід'ємне ціле число.";
+        container.innerHTML = "<b>Помилка:</b> Введіть невід'ємне ціле число";
         return;
     }
 
@@ -115,7 +115,7 @@ function runTask3() {
 
     if (isNaN(number) || number < 0) {
         alert("Увага: введено некоректне число!");
-        container.innerHTML = "<b>Помилка:</b> Введіть додатне ціле число.";
+        container.innerHTML = "<b>Помилка:</b> Введіть додатне ціле число";
         return;
     }
 

@@ -1,37 +1,31 @@
 // ==========================================
-// ЗАВДАННЯ 1 (Введення чисел через кому в одне віконце)
+// ЗАВДАННЯ 1: Сумування або віднімання
 // ==========================================
-function operation(arr) {
-    let manipulation = "";
-    let result = 0;
-
-    if (arr.length % 2 === 0) {
-        manipulation = "сумування";
-        for (let i = 0; i < arr.length; i++) {
-            result += arr[i];
-        }
+function sumOrMinus(...args) {
+    if (args.length % 2 === 0) {
+        // Парна кількість: сумуємо всі елементи
+        return args.reduce((acc, val) => acc + val, 0);
     } else {
-        manipulation = "віднімання (від останнього до першого)";
-        result = arr[arr.length - 1];
-        for (let j = arr.length - 2; j >= 0; j--) {
-            result -= arr[j];
+        // Непарна кількість: віднімаємо від останнього до першого
+        let result = args[args.length - 1];
+        for (let i = args.length - 2; i >= 0; i--) {
+            result -= args[i];
         }
+        return result;
     }
-    return { name: manipulation, res: result };
 }
 
 function runTask1() {
-    let input = prompt("Завдання 1\nВведіть числа через кому (наприклад: 2, 5, 8, 4):");
+    let input = prompt("Завдання 1\nВведіть числа через кому (наприклад: 1, 2, 3 або 2, 5, 8, 4):");
     let container = document.getElementById("resultTask1");
 
     if (!input || input.trim() === "") {
         return;
     }
 
-    // Розбиваємо рядок за комою та перетворюємо на числа
+    // Розбиваємо рядок за комою у масив чисел
     let arr = input.split(",").map(item => parseFloat(item.trim().replace(",", ".")));
 
-    // Перевіряємо, чи всі елементи є числами
     if (arr.some(isNaN)) {
         alert("Помилка: одне або кілька значень не є числами!");
         container.innerHTML = "<b>Помилка:</b> Некоректне введення даних.";
@@ -44,15 +38,15 @@ function runTask1() {
         return;
     }
 
-    let calc = operation(arr);
+    let operationName = (arr.length % 2 === 0) ? "сумування" : "віднімання (від останнього до першого)";
+    let result = sumOrMinus(...arr);
+
     container.innerHTML = `
         <b>Введені числа:</b> ${arr.join(", ")}<br>
-        <b>Операція:</b> ${calc.name}<br>
-        <b>Результат:</b> ${calc.res}
+        <b>Операція:</b> ${operationName}<br>
+        <b>Результат:</b> ${result}
     `;
 }
-
-
 // ==========================================
 // ЗАВДАННЯ 2 (Факторіал через рекурсію)
 // ==========================================

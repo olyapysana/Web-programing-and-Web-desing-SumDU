@@ -1,100 +1,154 @@
-// --- Завдання 1 ---
-console.log("=== Завдання 1 ===");
-function sumOrMinus(...args) {
-    if (args.length === 0) return 0;
-    
-    if (args.length % 2 === 0) {
-        return args.reduce((sum, num) => sum + num, 0);
-    } else {
-        let result = args[args.length - 1];
-        for (let i = args.length - 2; i >= 0; i--) {
-            result -= args[i];
+// ==========================================
+// ЗАВДАННЯ 1
+// ==========================================
+function operation(arr) {
+    let manipulation = "";
+    let result = 0;
+
+    if (arr.length % 2 === 0) {
+        manipulation = "сумування";
+        for (let i = 0; i < arr.length; i++) {
+            result += arr[i];
         }
-        return result;
+    } else {
+        manipulation = "віднімання (від останнього до першого)";
+        result = arr[arr.length - 1];
+        for (let j = arr.length - 2; j >= 0; j--) {
+            result -= arr[j];
+        }
     }
+    return { name: manipulation, res: result };
 }
 
-const res1_1 = sumOrMinus(1, 2, 3);
-const res1_2 = sumOrMinus(2, 5, 8, 4);
-const res1_3 = sumOrMinus(8, 1, 2);
+function runTask1() {
+    let parameters = [];
+    let entry;
 
-console.log("sumOrMinus(1, 2, 3) =", res1_1);
-console.log("sumOrMinus(2, 5, 8, 4) =", res1_2);
-console.log("sumOrMinus(8, 1, 2) =", res1_3);
+    while (true) {
+        entry = prompt("Завдання 1\nВведіть число:\n(Введіть '*', щоб завершити введення)");
 
-document.getElementById("result1").innerHTML = `
-    sumOrMinus(1, 2, 3) = ${res1_1} <br>
-    sumOrMinus(2, 5, 8, 4) = ${res1_2} <br>
-    sumOrMinus(8, 1, 2) = ${res1_3}
-`;
+        if (entry === null || entry === "*") {
+            break;
+        }
+
+        let number = parseFloat(entry.trim().replace(",", "."));
+        if (isNaN(number)) {
+            alert("Увага: некоректне значення! Введіть число.");
+            continue;
+        }
+
+        parameters.push(number);
+    }
+
+    let container = document.getElementById("resultTask1");
+
+    if (parameters.length < 2) {
+        container.innerHTML = "<b>Помилка:</b> Потрібно ввести мінімум 2 числа!";
+        alert("Потрібно ввести щонайменше 2 числа.");
+        return;
+    }
+
+    let calc = operation(parameters);
+    container.innerHTML = `
+        <b>Введені числа:</b> ${parameters.join(", ")}<br>
+        <b>Операція:</b> ${calc.name}<br>
+        <b>Результат:</b> ${calc.res}
+    `;
+}
 
 
-// --- Завдання 2 ---
-console.log("\n=== Завдання 2 ===");
+// ==========================================
+// ЗАВДАННЯ 2
+// ==========================================
 function factorialRecursion(n) {
-    if (n < 0) return undefined;
-    if (n === 0 || n === 1) return 1;
+    if (n === 0 || n === 1) {
+        return 1;
+    }
     return n * factorialRecursion(n - 1);
 }
 
-const res2_0 = factorialRecursion(0);
-const res2_5 = factorialRecursion(5);
-const res2_7 = factorialRecursion(7);
+function runTask2() {
+    let inputString = prompt("Завдання 2\nВведіть ціле невід'ємне число для факторіалу:");
 
-console.log("factorialRecursion(0) =", res2_0);
-console.log("factorialRecursion(5) =", res2_5);
-console.log("factorialRecursion(7) =", res2_7);
+    if (inputString === null || inputString === "") {
+        return;
+    }
 
-document.getElementById("result2").innerHTML = `
-    factorialRecursion(0) = ${res2_0} <br>
-    factorialRecursion(5) = ${res2_5} <br>
-    factorialRecursion(7) = ${res2_7}
-`;
+    let n = parseInt(inputString.trim().replace(",", "."));
+    let container = document.getElementById("resultTask2");
+
+    if (isNaN(n) || n < 0) {
+        alert("Увага: введено некоректне або від'ємне число!");
+        container.innerHTML = "<b>Помилка:</b> Введіть невід'ємне ціле число.";
+        return;
+    }
+
+    let result = factorialRecursion(n);
+    container.innerHTML = `
+        <b>Введене число:</b> ${n}<br>
+        <b>Факторіал:</b> ${result}
+    `;
+}
 
 
-// --- Завдання 3 ---
-console.log("\n=== Завдання 3 ===");
+// ==========================================
+// ЗАВДАННЯ 3
+// ==========================================
 let numberOfRecusrionCalls = 0;
 let numberOfMemoCalls = 0;
 
 function fibonachiRecursion(numberInRow) {
     numberOfRecusrionCalls++;
-
     if (numberInRow <= 1) {
         return 1;
     }
-
     return fibonachiRecursion(numberInRow - 1) + fibonachiRecursion(numberInRow - 2);
 }
 
 function createFibonachiMemo() {
     const cache = {};
 
-    return function fibonachiMemo(numberInRow) {
+    return function fib(numberInRow) {
         numberOfMemoCalls++;
-
-        if (numberInRow in cache) {
-            return cache[numberInRow];
-        }
-
         if (numberInRow <= 1) {
             return 1;
         }
-
-        cache[numberInRow] = fibonachiMemo(numberInRow - 1) + fibonachiMemo(numberInRow - 2);
+        if (cache[numberInRow] !== undefined) {
+            return cache[numberInRow];
+        }
+        cache[numberInRow] = fib(numberInRow - 1) + fib(numberInRow - 2);
         return cache[numberInRow];
     };
 }
 
-const fibonachiMemo = createFibonachiMemo();
+function runTask3() {
+    let inputString = prompt("Завдання 3\nВведіть номер числа Фібоначчі (наприклад, 5 або 10):");
 
-const fibRecResult = fibonachiRecursion(5);
-const fibMemoResult = fibonachiMemo(5);
+    if (inputString === null || inputString === "") {
+        return;
+    }
 
-console.log("Рекурсія:", fibRecResult, "| Кількість викликів:", numberOfRecusrionCalls);
-console.log("Мемоїзація:", fibMemoResult, "| Кількість викликів:", numberOfMemoCalls);
+    let number = parseInt(inputString.trim());
+    let container = document.getElementById("resultTask3");
 
-document.getElementById("result3").innerHTML = `
-    Рекурсія (для 5): ${fibRecResult} | Викликів: ${numberOfRecusrionCalls} <br>
-    Мемоїзація (для 5): ${fibMemoResult} | Викликів: ${numberOfMemoCalls}
-`;
+    if (isNaN(number) || number < 0) {
+        alert("Увага: введено некоректне число!");
+        container.innerHTML = "<b>Помилка:</b> Введіть додатне ціле число.";
+        return;
+    }
+
+    // Скидаємо лічильники викликів перед запуском
+    numberOfRecusrionCalls = 0;
+    numberOfMemoCalls = 0;
+
+    let resRec = fibonachiRecursion(number);
+    
+    const fibonachiMemo = createFibonachiMemo();
+    let resMemo = fibonachiMemo(number);
+
+    container.innerHTML = `
+        <b>Номер числа:</b> ${number}<br>
+        <b>Звичайна рекурсія:</b> результат = ${resRec} | Кількість викликів = ${numberOfRecusrionCalls}<br>
+        <b>Мемоїзація:</b> результат = ${resMemo} | Кількість викликів = ${numberOfMemoCalls}
+    `;
+}

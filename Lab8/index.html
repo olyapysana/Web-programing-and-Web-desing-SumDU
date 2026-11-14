@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ТехноПлюс — Магазин портативної електроніки </title>
+    <title>Магазин портативної електроніки </title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,9 +17,7 @@
         </nav>
     </header>
 
-    <!-- =========================================================
-         ЗАВДАННЯ 2 та 3: Слайдер на всю ширину сторінки (Варіант 12)
-         ========================================================= -->
+    <!--  ЗАВДАННЯ 2-3 -->
     <section id="slider-block" class="slider-section">
         <div class="slider-container">
 
@@ -78,12 +76,10 @@
                     </p>
                 </div>
             </div>
-
-            <!-- Кнопки вперед / назад -->
+            
             <a class="slider-prev" onclick="minusSlide()" title="Попередній слайд">&#10094;</a>
             <a class="slider-next" onclick="plusSlide()" title="Наступний слайд">&#10095;</a>
 
-            <!-- Індикатори-риски внизу (Варіант 12) -->
             <div class="slider-bars">
                 <span class="slider-bar-item" onclick="currentSlide(1)"></span>
                 <span class="slider-bar-item" onclick="currentSlide(2)"></span>
@@ -96,9 +92,7 @@
 
     <div class="main-wrapper">
 
-        <!-- =========================================================
-             ЗАВДАННЯ 1: Функціональні ТАБИ на основі тегу <table>
-             ========================================================= -->
+        <!-- ЗАВДАННЯ 1 -->
         <section id="tabs-block" class="task-card">
             <h2 class="section-title">Інтерактивний каталог категорій електроніки</h2>
             <table class="tabs-table">
@@ -111,21 +105,17 @@
                 </tr>
                 <tr>
                     <td colspan="5" id="tab-content-area" class="tab-body">
-                        <!-- Вміст завантажується автоматично через JavaScript -->
                     </td>
                 </tr>
             </table>
         </section>
 
-        <!-- =========================================================
-             ЗАВДАННЯ 4 та 5: Форми та JavaScript-валідація
-             ========================================================= -->
+        <!--ЗАВДАННЯ 4 та 5 -->
         <section id="forms-block" class="task-card">
             <h2 class="section-title">Робота з формами та перевірка заповнення</h2>
 
             <div class="forms-grid">
 
-                <!-- ЗАВДАННЯ 4: Форма замовлення / підбору гаджета -->
                 <div class="form-box">
                     <h3>Форма замовлення гаджета</h3>
                     <form name="houseForm" id="houseForm" onsubmit="return validateHouseForm()" onreset="resetHouseForm()">
@@ -210,7 +200,7 @@
                     </form>
                 </div>
 
-                <!-- ЗАВДАННЯ 5: Форми реєстрації та авторизації покупця -->
+                <!-- ЗАВДАННЯ 5 -->
                 <div class="auth-wrapper">
 
                     <!-- Форма реєстрації -->

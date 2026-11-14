@@ -1,4 +1,4 @@
-// ЗАВДАННЯ 1
+  // ЗАВДАННЯ 1
 
 const tabsData = {
     1: {
@@ -141,41 +141,41 @@ function updatePriceLabel(val) {
     document.getElementById("priceValue").innerText = val + " грн";
 }
 
-function resetHouseForm() {
+function resetOrderForm() {
     const errorIds = [
-        "err-lastName", "err-firstName", "err-houseEmail",
-        "err-phone", "err-address", "err-housingType"
+        "err-lastName", "err-firstName", "err-orderEmail",
+        "err-phone", "err-address", "err-gadgetType"
     ];
     errorIds.forEach(id => {
         const el = document.getElementById(id);
         if (el) el.innerHTML = "";
     });
-    const successEl = document.getElementById("houseFormSuccess");
+    const successEl = document.getElementById("orderFormSuccess");
     if (successEl) successEl.innerHTML = "";
     const priceVal = document.getElementById("priceValue");
     if (priceVal) priceVal.innerText = "15000 грн";
 }
 
-function validateHouseForm() {
+function validateOrderForm() {
     const errorIds = [
-        "err-lastName", "err-firstName", "err-houseEmail",
-        "err-phone", "err-address", "err-housingType"
+        "err-lastName", "err-firstName", "err-orderEmail",
+        "err-phone", "err-address", "err-gadgetType"
     ];
     errorIds.forEach(id => {
         const el = document.getElementById(id);
         if (el) el.innerHTML = "";
     });
-    const successEl = document.getElementById("houseFormSuccess");
+    const successEl = document.getElementById("orderFormSuccess");
     if (successEl) successEl.innerHTML = "";
 
     let isValid = true;
 
-    const lastName = document.forms["houseForm"]["lastName"].value.trim();
-    const firstName = document.forms["houseForm"]["name"].value.trim();
-    const email = document.forms["houseForm"]["email"].value.trim();
-    const phone = document.forms["houseForm"]["phone"].value.trim();
-    const address = document.forms["houseForm"]["address"].value.trim();
-    const housingTypes = document.forms["houseForm"]["housingType"];
+    const lastName = document.forms["orderForm"]["lastName"].value.trim();
+    const firstName = document.forms["orderForm"]["name"].value.trim();
+    const email = document.forms["orderForm"]["email"].value.trim();
+    const phone = document.forms["orderForm"]["phone"].value.trim();
+    const address = document.forms["orderForm"]["address"].value.trim();
+    const gadgetTypes = document.forms["orderForm"]["gadgetType"];
 
     if (lastName.length === 0) {
         document.getElementById("err-lastName").innerHTML = "*дане поле обов’язкове для заповнення";
@@ -193,10 +193,10 @@ function validateHouseForm() {
     const at = email.indexOf("@");
     const dot = email.lastIndexOf(".");
     if (email.length === 0) {
-        document.getElementById("err-houseEmail").innerHTML = "*дане поле обов’язкове для заповнення";
+        document.getElementById("err-orderEmail").innerHTML = "*дане поле обов’язкове для заповнення";
         isValid = false;
     } else if (at < 1 || dot < at + 2 || dot + 2 >= email.length) {
-        document.getElementById("err-houseEmail").innerHTML = "*email введено не вірно";
+        document.getElementById("err-orderEmail").innerHTML = "*email введено не вірно";
         isValid = false;
     }
 
@@ -215,19 +215,19 @@ function validateHouseForm() {
     }
 
     let typeSelected = false;
-    for (let i = 0; i < housingTypes.length; i++) {
-        if (housingTypes[i].checked) {
+    for (let i = 0; i < gadgetTypes.length; i++) {
+        if (gadgetTypes[i].checked) {
             typeSelected = true;
             break;
         }
     }
     if (!typeSelected) {
-        document.getElementById("err-housingType").innerHTML = "*оберіть категорію товару";
+        document.getElementById("err-gadgetType").innerHTML = "*оберіть категорію товару";
         isValid = false;
     }
 
     if (isValid) {
-        document.getElementById("houseFormSuccess").innerHTML = "Замовлення на гаджет успішно оформлено! Очікуйте дзвінка менеджера.";
+        document.getElementById("orderFormSuccess").innerHTML = "Замовлення на гаджет успішно оформлено! Очікуйте дзвінка менеджера.";
     }
 
     return false;

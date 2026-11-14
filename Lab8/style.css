@@ -1,0 +1,412 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+    color: #2c3e50;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #1e2d3b;
+    color: #ffffff;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+header h1 {
+    font-size: 22px;
+    letter-spacing: 0.5px;
+}
+
+nav a {
+    color: #cbd5e1;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #ffffff;
+}
+
+/* =========================================================
+   ЗАВДАННЯ 2 та 3: Слайдер на всю ширину (Варіант 12)
+   ========================================================= */
+.slider-section {
+    width: 100%;
+    background-color: #1f2d3d;
+    position: relative;
+    overflow: hidden;
+    padding: 50px 0 40px 0;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.slider-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    padding: 0 70px;
+}
+
+.slide-item {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 45px;
+    animation: fadeEffect 0.8s ease;
+}
+
+@keyframes fadeEffect {
+    from { opacity: 0.35; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-avatar {
+    flex-shrink: 0;
+    width: 210px;
+    height: 210px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #d1d5db;
+    border: 4px solid #33465b;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.slide-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.slide-info {
+    max-width: 560px;
+    color: #e2e8f0;
+}
+
+.slide-info h2 {
+    font-size: 32px;
+    font-weight: 600;
+    color: #c7d2fe;
+    margin-bottom: 6px;
+}
+
+.slide-info .role {
+    font-size: 18px;
+    color: #94a3b8;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.slide-info .description {
+    font-size: 16px;
+    color: #cbd5e1;
+    line-height: 1.65;
+}
+
+/* Кнопки навігації слайдера (Варіант 12 — квадратні темні блоки зліва/справа) */
+.slider-prev, .slider-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    background-color: rgba(15, 23, 34, 0.75);
+    color: #94a3b8;
+    font-size: 22px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    user-select: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.slider-prev {
+    left: 15px;
+}
+
+.slider-next {
+    right: 15px;
+}
+
+.slider-prev:hover, .slider-next:hover {
+    background-color: #0f1722;
+    color: #ffffff;
+}
+
+/* Горизонтальні риски-індикатори внизу (Варіант 12) */
+.slider-bars {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 35px;
+}
+
+.slider-bar-item {
+    cursor: pointer;
+    width: 36px;
+    height: 4px;
+    background-color: #475569;
+    border-radius: 2px;
+    transition: background-color 0.3s, width 0.3s;
+}
+
+.slider-bar-item.active,
+.slider-bar-item:hover {
+    background-color: #ffffff;
+}
+
+/* =========================================================
+   Контейнер основного вмісту
+   ========================================================= */
+.main-wrapper {
+    max-width: 1100px;
+    margin: 0 auto 60px auto;
+    padding: 0 20px;
+}
+
+.task-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 35px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.task-card h2.section-title {
+    font-size: 22px;
+    color: #1e2d3b;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+    margin-bottom: 22px;
+}
+
+/* =========================================================
+   ЗАВДАННЯ 1: Таби на основі тегу <table>
+   ========================================================= */
+.tabs-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.tabs-table td.tab-header {
+    border: 1px solid #cbd5e1;
+    background-color: #e2e8f0;
+    color: #1e293b;
+    font-weight: 600;
+    text-align: center;
+    padding: 14px 10px;
+    cursor: pointer;
+    transition: background-color 0.25s, color 0.25s;
+}
+
+.tabs-table td.tab-header:hover {
+    background-color: #cbd5e1;
+}
+
+.tabs-table td.tab-header.active-tab {
+    background-color: #1f2d3d;
+    color: #ffffff;
+    border-bottom-color: #1f2d3d;
+}
+
+.tabs-table td.tab-body {
+    border: 1px solid #cbd5e1;
+    padding: 25px;
+    background-color: #ffffff;
+    vertical-align: top;
+}
+
+.tab-content-layout {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.tab-content-layout img {
+    width: 240px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    flex-shrink: 0;
+}
+
+.tab-text-block h3 {
+    color: #1f2d3d;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.tab-text-block p {
+    color: #475569;
+    margin-bottom: 10px;
+}
+
+.tab-text-block ul {
+    margin-left: 20px;
+    color: #334155;
+}
+
+/* =========================================================
+   ЗАВДАННЯ 4 та 5: Форми та валідація
+   ========================================================= */
+.forms-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.form-box {
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 24px;
+}
+
+.form-box h3 {
+    text-align: center;
+    color: #1f2d3d;
+    margin-bottom: 18px;
+    font-size: 20px;
+}
+
+.form-group {
+    margin-bottom: 14px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #334155;
+    font-size: 14px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="password"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid #94a3b8;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #1f2d3d;
+    box-shadow: 0 0 0 2px rgba(31, 45, 61, 0.15);
+}
+
+.radio-group label,
+.checkbox-group label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 400;
+    margin-right: 14px;
+    cursor: pointer;
+}
+
+.range-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.range-wrapper input[type="range"] {
+    flex: 1;
+}
+
+.form-divider {
+    border: 0;
+    border-top: 1px solid #94a3b8;
+    margin: 14px 0;
+}
+
+.error-msg {
+    color: #dc2626;
+    font-size: 12px;
+    margin-top: 4px;
+    min-height: 16px;
+    font-weight: 500;
+}
+
+.success-msg {
+    color: #15803d;
+    font-size: 14px;
+    margin-top: 12px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.btn-group {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.25s;
+}
+
+.btn-primary {
+    background-color: #34495e;
+    color: #ffffff;
+}
+
+.btn-primary:hover {
+    background-color: #1f2d3d;
+}
+
+.btn-secondary {
+    background-color: #64748b;
+    color: #ffffff;
+}
+
+.btn-secondary:hover {
+    background-color: #475569;
+}
+
+.auth-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+@media (max-width: 850px) {
+    .forms-grid {
+        grid-template-columns: 1fr;
+    }
+    .slide-item, .tab-content-layout {
+        flex-direction: column;
+        text-align: center;
+    }
+}

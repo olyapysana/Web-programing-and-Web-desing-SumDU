@@ -11,7 +11,7 @@ const tabsData = {
             "Підбір типографіки та гармонійної колірної палітри",
             "Адаптація під мобільні та десктопні екрани"
         ],
-        image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=600&q=80",
+        image: "img/tab1.jpg",
         bgColor: "#f8fafc"
     },
     2: {
@@ -22,7 +22,7 @@ const tabsData = {
             "Обробка подій користувача (click, submit, input)",
             "Реалізація слайдерів, вкладок та модальних вікон"
         ],
-        image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80",
+        image: "img/tab2.jpg",
         bgColor: "#f0f9ff"
     },
     3: {
@@ -33,7 +33,7 @@ const tabsData = {
             "Валідація вхідних даних на стороні сервера",
             "Інтеграція зовнішніх платіжних та поштових сервісів"
         ],
-        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=600&q=80",
+        image: "img/tab3.jpg",
         bgColor: "#f0fdf4"
     },
     4: {
@@ -44,7 +44,7 @@ const tabsData = {
             "Індексування таблиць для прискорення вибірки",
             "Забезпечення цілісності транзакцій"
         ],
-        image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=600&q=80",
+        image: "img/tab4.jpg",
         bgColor: "#fefce8"
     },
     5: {
@@ -55,7 +55,7 @@ const tabsData = {
             "Перевірка граничних значень у полях введення",
             "Тестування швидкодії та кросбраузерності"
         ],
-        image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600&q=80",
+        image: "img/tab5.jpg",
         bgColor: "#fdf4ff"
     }
 };

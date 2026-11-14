@@ -118,7 +118,7 @@
 
                 <div class="form-box">
                     <h3>Форма замовлення гаджета</h3>
-                    <form name="houseForm" id="houseForm" onsubmit="return validateHouseForm()" onreset="resetHouseForm()">
+                    <form name="orderForm" id="orderForm" onsubmit="return validateOrderForm()" onreset="resetOrderForm()">
                         <div class="form-group">
                             <label for="lastName">Прізвище покупця:</label>
                             <input type="text" id="lastName" name="lastName" placeholder="Введіть прізвище">
@@ -132,9 +132,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="houseEmail">Електронна пошта:</label>
-                            <input type="text" id="houseEmail" name="email" placeholder="client@gmail.com">
-                            <div class="error-msg" id="err-houseEmail"></div>
+                            <label for="orderEmail">Електронна пошта:</label>
+                            <input type="text" id="orderEmail" name="email" placeholder="client@gmail.com">
+                            <div class="error-msg" id="err-orderEmail"></div>
                         </div>
 
                         <div class="form-group">
@@ -153,10 +153,10 @@
 
                         <div class="form-group radio-group">
                             <label>Оберіть категорію товару:</label>
-                            <label><input type="radio" name="housingType" value="Смартфон"> Смартфон</label>
-                            <label><input type="radio" name="housingType" value="Навушники"> Навушники</label>
-                            <label><input type="radio" name="housingType" value="Годинник"> Годинник</label>
-                            <div class="error-msg" id="err-housingType"></div>
+                            <label><input type="radio" name="gadgetType" value="Смартфон"> Смартфон</label>
+                            <label><input type="radio" name="gadgetType" value="Навушники"> Навушники</label>
+                            <label><input type="radio" name="gadgetType" value="Годинник"> Годинник</label>
+                            <div class="error-msg" id="err-gadgetType"></div>
                         </div>
 
                         <div class="form-group">
@@ -196,7 +196,7 @@
                             <button type="submit" class="btn btn-primary">Замовити</button>
                             <button type="reset" class="btn btn-secondary">Скасувати</button>
                         </div>
-                        <div class="success-msg" id="houseFormSuccess"></div>
+                        <div class="success-msg" id="orderFormSuccess"></div>
                     </form>
                 </div>
 

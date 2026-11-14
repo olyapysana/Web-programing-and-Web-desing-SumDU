@@ -1,59 +1,60 @@
 // =========================================================================
 // ЗАВДАННЯ 1: Функціональні ТАБИ на сторінці HTML засобами DOM API
+// (Тематика курсової: Магазин портативної електроніки)
 // =========================================================================
 
 const tabsData = {
     1: {
-        title: "Веб-дизайн та прототипування інтерфейсів",
-        description: "Розробка візуальної концепції вебсайту, побудова каркасних моделей (wireframes) та адаптивних макетів із урахуванням принципів UX.",
+        title: "Смартфони та флагманські пристрої",
+        description: "Найсучасніші смартфони з потужними процесорами, професійними камерами та яскравими AMOLED-дисплеями для щоденного використання та ігор.",
         items: [
-            "Проєктування модульних сіток та композиції",
-            "Підбір типографіки та гармонійної колірної палітри",
-            "Адаптація під мобільні та десктопні екрани"
+            "Підтримка мереж 5G та швидка зарядка",
+            "Висока автономність та ємні акумулятори",
+            "Офіційна гарантія виробника від 12 місяців"
         ],
         image: "img/tab1.jpg",
         bgColor: "#f8fafc"
     },
     2: {
-        title: "Frontend-розробка на JavaScript та DOM API",
-        description: "Створення інтерактивних елементів сторінки, динамічна зміна структури HTML-документа та керування стилями CSS у реальному часі.",
+        title: "Бездротові навушники та аудіо",
+        description: "Якісний звук, активне шумозаглушення (ANC) та ергономічний дизайн для комфортного прослуховування музики в будь-яких умовах.",
         items: [
-            "Пошук та модифікація вузлів через getElementById та querySelector",
-            "Обробка подій користувача (click, submit, input)",
-            "Реалізація слайдерів, вкладок та модальних вікон"
+            "Глибокий бас та кристально чисті високі частоти",
+            "До 30 годин автономної роботи з кейсом",
+            "Зручне сенсорне керування та захист від вологи"
         ],
         image: "img/tab2.jpg",
         bgColor: "#f0f9ff"
     },
     3: {
-        title: "Серверна логіка та RESTful API",
-        description: "Забезпечення надійного обміну даними між клієнтською частиною та сервером, автентифікація користувачів і захист запитів.",
+        title: "Смарт-годинники та фітнес-трекери",
+        description: "Стежте за своїм здоров'ям, спортивними досягненнями та залишайтеся на зв'язку завдяки розумним гаджетам на зап'ясті.",
         items: [
-            "Проєктування архітектури маршрутів та контролерів",
-            "Валідація вхідних даних на стороні сервера",
-            "Інтеграція зовнішніх платіжних та поштових сервісів"
+            "Цілодобовий моніторинг пульсу, рівня кисню в крові та сну",
+            "Десятків спортивних режимів для тренувань",
+            "Стильні змінні ремінці та металеві корпуси"
         ],
         image: "img/tab3.jpg",
         bgColor: "#f0fdf4"
     },
     4: {
-        title: "Проєктування та оптимізація баз даних",
-        description: "Створення нормалізованих реляційних схем даних, написання ефективних SQL-запитів та резервне копіювання інформації.",
+        title: "Планшети для роботи та творчості",
+        description: "Мобільні та продуктивні пристрої з великими екранами для перегляду контенту, малювання, навчання та мобільного офісу.",
         items: [
-            "Побудова ER-діаграм та зв'язків між сутностями",
-            "Індексування таблиць для прискорення вибірки",
-            "Забезпечення цілісності транзакцій"
+            "Підтримка стилусів та клавіатур",
+            "Потужні чипсети для роботи з важкими програмами",
+            "Легкий та тонкий алюмінієвий корпус"
         ],
         image: "img/tab4.jpg",
         bgColor: "#fefce8"
     },
     5: {
-        title: "Забезпечення якості та тестування (QA)",
-        description: "Комплексна перевірка функціоналу вебдодатків, тестування валідації форм та виявлення помилок до публікації проєкту.",
+        title: "Портативні акумулятори та аксесуари",
+        description: "Корисні доповнення для вашої електроніки: павербанки, швидкі зарядні пристрої, кабелі та надійні захисні чохли.",
         items: [
-            "Функціональне та регресійне тестування інтерфейсу",
-            "Перевірка граничних значень у полях введення",
-            "Тестування швидкодії та кросбраузерності"
+            "Технології швидкої зарядки Power Delivery та Quick Charge",
+            "Захист від перегріву та стрибків напруги",
+            "Компактні розміри для подорожей"
         ],
         image: "img/tab5.jpg",
         bgColor: "#fdf4ff"
@@ -66,7 +67,6 @@ function info_for_tab(tabNumber) {
 
     if (!contentBlock || !data) return;
 
-    // Знімаємо активний клас з усіх заголовків табів
     for (let i = 1; i <= 5; i++) {
         const headerCell = document.getElementById("tab-btn-" + i);
         if (headerCell) {
@@ -74,16 +74,13 @@ function info_for_tab(tabNumber) {
         }
     }
 
-    // Додаємо активний клас поточному табу
     const activeHeader = document.getElementById("tab-btn-" + tabNumber);
     if (activeHeader) {
         activeHeader.classList.add("active-tab");
     }
 
-    // Формуємо список переваг
     const listHtml = data.items.map(item => `<li>${item}</li>`).join("");
 
-    // Змінюємо внутрішній HTML та фоновий колір через DOM API
     contentBlock.style.backgroundColor = data.bgColor;
     contentBlock.innerHTML = `
         <div class="tab-content-layout">
@@ -99,7 +96,7 @@ function info_for_tab(tabNumber) {
 
 
 // =========================================================================
-// ЗАВДАННЯ 2 та 3: Слайдер (Варіант 12)
+// ЗАВДАННЯ 2 та 3: Слайдер (Варіант 12 — Електроніка)
 // =========================================================================
 
 let slideIndex = 1;
@@ -145,11 +142,11 @@ function showSlides(n) {
 
 
 // =========================================================================
-// ЗАВДАННЯ 4: Валідація форми підбору будинку (за зразком рис. 5.3)
+// ЗАВДАННЯ 4: Валідація форми підбору гаджета в магазині
 // =========================================================================
 
 function updatePriceLabel(val) {
-    document.getElementById("priceValue").innerText = val + "$";
+    document.getElementById("priceValue").innerText = val + " грн";
 }
 
 function resetHouseForm() {
@@ -158,22 +155,26 @@ function resetHouseForm() {
         "err-phone", "err-address", "err-housingType"
     ];
     errorIds.forEach(id => {
-        document.getElementById(id).innerHTML = "";
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = "";
     });
-    document.getElementById("houseFormSuccess").innerHTML = "";
-    document.getElementById("priceValue").innerText = "3500$";
+    const successEl = document.getElementById("houseFormSuccess");
+    if (successEl) successEl.innerHTML = "";
+    const priceVal = document.getElementById("priceValue");
+    if (priceVal) priceVal.innerText = "15000 грн";
 }
 
 function validateHouseForm() {
-    // Очищаємо попередні повідомлення
     const errorIds = [
         "err-lastName", "err-firstName", "err-houseEmail",
         "err-phone", "err-address", "err-housingType"
     ];
     errorIds.forEach(id => {
-        document.getElementById(id).innerHTML = "";
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = "";
     });
-    document.getElementById("houseFormSuccess").innerHTML = "";
+    const successEl = document.getElementById("houseFormSuccess");
+    if (successEl) successEl.innerHTML = "";
 
     let isValid = true;
 
@@ -184,7 +185,6 @@ function validateHouseForm() {
     const address = document.forms["houseForm"]["address"].value.trim();
     const housingTypes = document.forms["houseForm"]["housingType"];
 
-    // Перевірка прізвища
     if (lastName.length === 0) {
         document.getElementById("err-lastName").innerHTML = "*дане поле обов’язкове для заповнення";
         isValid = false;
@@ -193,13 +193,11 @@ function validateHouseForm() {
         isValid = false;
     }
 
-    // Перевірка імені
     if (firstName.length === 0) {
         document.getElementById("err-firstName").innerHTML = "*дане поле обов’язкове для заповнення";
         isValid = false;
     }
 
-    // Перевірка email (перевірка @ і крапки та формату)
     const at = email.indexOf("@");
     const dot = email.lastIndexOf(".");
     if (email.length === 0) {
@@ -210,7 +208,6 @@ function validateHouseForm() {
         isValid = false;
     }
 
-    // Перевірка номера телефону
     const phoneRegex = /^\+380\d{9}$/;
     if (phone.length === 0) {
         document.getElementById("err-phone").innerHTML = "*вкажіть номер телефону";
@@ -220,13 +217,11 @@ function validateHouseForm() {
         isValid = false;
     }
 
-    // Перевірка адреси
     if (address.length === 0) {
-        document.getElementById("err-address").innerHTML = "*вкажіть бажану адресу або район";
+        document.getElementById("err-address").innerHTML = "*вкажіть відділення Нової Пошти або місто";
         isValid = false;
     }
 
-    // Перевірка вибору типу житла (radio)
     let typeSelected = false;
     for (let i = 0; i < housingTypes.length; i++) {
         if (housingTypes[i].checked) {
@@ -235,15 +230,15 @@ function validateHouseForm() {
         }
     }
     if (!typeSelected) {
-        document.getElementById("err-housingType").innerHTML = "*оберіть тип житла";
+        document.getElementById("err-housingType").innerHTML = "*оберіть категорію товару";
         isValid = false;
     }
 
     if (isValid) {
-        document.getElementById("houseFormSuccess").innerHTML = "Заявку на підбір житла успішно перевірено та відправлено!";
+        document.getElementById("houseFormSuccess").innerHTML = "Замовлення на гаджет успішно оформлено! Очікуйте дзвінка менеджера.";
     }
 
-    return false; // Запобігаємо перезавантаженню сторінки для демонстрації результату
+    return false;
 }
 
 
@@ -295,7 +290,7 @@ function validateRegisterForm() {
     }
 
     if (isValid) {
-        document.getElementById("regSuccess").innerHTML = "Реєстрація успішна! Обліковий запис створено.";
+        document.getElementById("regSuccess").innerHTML = "Реєстрація покупця успішна!";
     }
 
     return false;
@@ -329,13 +324,12 @@ function validateLoginForm() {
     }
 
     if (isValid) {
-        document.getElementById("loginSuccess").innerHTML = "Авторизація пройшла успішно!";
+        document.getElementById("loginSuccess").innerHTML = "Авторизація покупця успішна!";
     }
 
     return false;
 }
 
-// Ініціалізація першого табу та першого слайду після завантаження DOM
 document.addEventListener("DOMContentLoaded", function () {
     info_for_tab(1);
     showSlides(slideIndex);

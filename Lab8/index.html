@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Лабораторна робота №8 </title>
+    <title>ТехноПлюс — Магазин портативної електроніки (ЛР №8)</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <h1>IT-Спеціалісти та Веб-розробка — Портал команди</h1>
+        <h1>ТехноПлюс — Магазин портативної електроніки</h1>
         <nav>
-            <a href="#slider-block">Команда (Слайдер)</a>
-            <a href="#tabs-block">Послуги (Таби)</a>
-            <a href="#forms-block">Форми та Валідація</a>
+            <a href="#slider-block">Топ-товари (Слайдер)</a>
+            <a href="#tabs-block">Категорії (Таби)</a>
+            <a href="#forms-block">Замовлення та Вхід</a>
         </nav>
     </header>
 
@@ -26,13 +26,13 @@
             <!-- Слайд 1 -->
             <div class="slide-item">
                 <div class="slide-avatar">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Олена Коваленко">
+                    <img src="img/slide1.jpg" alt="Смартфони флагманські">
                 </div>
                 <div class="slide-info">
-                    <h2>Олена Коваленко</h2>
-                    <div class="role">UI/UX та Web-дизайнер</div>
+                    <h2>Флагманські смартфони</h2>
+                    <div class="role">Сучасні технології зв'язку</div>
                     <p class="description">
-                        Створює сучасні адаптивні інтерфейси, дизайн-системи та інтерактивні прототипи. Спеціалізується на ергономіці користувацького досвіду та візуальній айдентиці вебпроєктів.
+                        Потужні процесори, неперевершені камери професійного рівня та яскраві AMOLED-екрани з високою частотою оновлення для роботи і розваг.
                     </p>
                 </div>
             </div>
@@ -40,13 +40,13 @@
             <!-- Слайд 2 -->
             <div class="slide-item">
                 <div class="slide-avatar">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80" alt="Максим Бондаренко">
+                    <img src="img/slide2.jpg" alt="Бездротові навушники">
                 </div>
                 <div class="slide-info">
-                    <h2>Максим Бондаренко</h2>
-                    <div class="role">Frontend-розробник (JavaScript / React)</div>
+                    <h2>Бездротові навушники</h2>
+                    <div class="role">Чистий звук та комфорт</div>
                     <p class="description">
-                        Відповідає за клієнтську архітектуру, роботу з DOM API, оптимізацію швидкодії вебдодатків та впровадження динамічних анімацій без втрати продуктивності.
+                        Активне шумозаглушення (ANC), глибокий бас та тривала автономність до 30 годин із зарядним кейсом для щоденного використання.
                     </p>
                 </div>
             </div>
@@ -54,13 +54,13 @@
             <!-- Слайд 3 -->
             <div class="slide-item">
                 <div class="slide-avatar">
-                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80" alt="Ірина Савченко">
+                    <img src="img/slide3.jpg" alt="Смарт-годинники">
                 </div>
                 <div class="slide-info">
-                    <h2>Ірина Савченко</h2>
-                    <div class="role">Backend-інженер та архітектор баз даних</div>
+                    <h2>Смарт-годинники</h2>
+                    <div class="role">Ваш фітнес-тренер на зап'ясті</div>
                     <p class="description">
-                        Проєктує серверні API, забезпечує безпеку авторизації користувачів, налаштовує реляційні бази даних та високонавантажені мікросервіси.
+                        Цілодобовий моніторинг здоров'я, пульсу, рівня кисню в крові та безліч спортивних режимів для ефективних тренувань.
                     </p>
                 </div>
             </div>
@@ -68,13 +68,13 @@
             <!-- Слайд 4 -->
             <div class="slide-item">
                 <div class="slide-avatar">
-                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80" alt="Дмитро Ткаченко">
+                    <img src="img/slide4.jpg" alt="Планшети">
                 </div>
                 <div class="slide-info">
-                    <h2>Дмитро Ткаченко</h2>
-                    <div class="role">QA-інженер та фахівець із тестування</div>
+                    <h2>Мобільні планшети</h2>
+                    <div class="role">Для навчання та творчості</div>
                     <p class="description">
-                        Проводить автоматизоване та ручне тестування вебформ, перевіряє коректність валідації даних, кросбраузерну сумісність та стабільність релізів.
+                        Легкі, тонкі та продуктивні пристрої з підтримкою стилусів для перегляду контенту, малювання та мобільного офісу.
                     </p>
                 </div>
             </div>
@@ -100,18 +100,18 @@
              ЗАВДАННЯ 1: Функціональні ТАБИ на основі тегу <table>
              ========================================================= -->
         <section id="tabs-block" class="task-card">
-            <h2 class="section-title">Завдання 1. Інтерактивні вкладки (Таби) на базі &lt;table&gt; та DOM API</h2>
+            <h2 class="section-title">Завдання 1. Інтерактивні вкладки товарів на базі &lt;table&gt; та DOM API</h2>
             <table class="tabs-table">
                 <tr>
-                    <td id="tab-btn-1" class="tab-header active-tab" onclick="info_for_tab(1)">Веб-дизайн</td>
-                    <td id="tab-btn-2" class="tab-header" onclick="info_for_tab(2)">Frontend JS</td>
-                    <td id="tab-btn-3" class="tab-header" onclick="info_for_tab(3)">Backend API</td>
-                    <td id="tab-btn-4" class="tab-header" onclick="info_for_tab(4)">Бази даних</td>
-                    <td id="tab-btn-5" class="tab-header" onclick="info_for_tab(5)">Тестування QA</td>
+                    <td id="tab-btn-1" class="tab-header active-tab" onclick="info_for_tab(1)">Смартфони</td>
+                    <td id="tab-btn-2" class="tab-header" onclick="info_for_tab(2)">Аудіо</td>
+                    <td id="tab-btn-3" class="tab-header" onclick="info_for_tab(3)">Годинники</td>
+                    <td id="tab-btn-4" class="tab-header" onclick="info_for_tab(4)">Планшети</td>
+                    <td id="tab-btn-5" class="tab-header" onclick="info_for_tab(5)">Аксесуари</td>
                 </tr>
                 <tr>
                     <td colspan="5" id="tab-content-area" class="tab-body">
-                        <!-- Початковий вміст завантажується через JS при відкритті сторінки -->
+                        <!-- Вміст завантажується автоматично через JavaScript -->
                     </td>
                 </tr>
             </table>
@@ -121,16 +121,16 @@
              ЗАВДАННЯ 4 та 5: Форми та JavaScript-валідація
              ========================================================= -->
         <section id="forms-block" class="task-card">
-            <h2 class="section-title">Завдання 4 та 5. Валідація форм керування, реєстрації та авторизації</h2>
+            <h2 class="section-title">Завдання 4 та 5. Валідація форм замовлення, реєстрації та авторизації</h2>
 
             <div class="forms-grid">
 
-                <!-- ЗАВДАННЯ 4: Форма підбору будинку (за зразком рисунка 5.3) -->
+                <!-- ЗАВДАННЯ 4: Форма замовлення / підбору гаджета -->
                 <div class="form-box">
-                    <h3>Форма підбору будинку</h3>
+                    <h3>Форма замовлення гаджета</h3>
                     <form name="houseForm" id="houseForm" onsubmit="return validateHouseForm()" onreset="resetHouseForm()">
                         <div class="form-group">
-                            <label for="lastName">Прізвище:</label>
+                            <label for="lastName">Прізвище покупця:</label>
                             <input type="text" id="lastName" name="lastName" placeholder="Введіть прізвище">
                             <div class="error-msg" id="err-lastName"></div>
                         </div>
@@ -143,7 +143,7 @@
 
                         <div class="form-group">
                             <label for="houseEmail">Email:</label>
-                            <input type="text" id="houseEmail" name="email" placeholder="yourmail@gmail.com">
+                            <input type="text" id="houseEmail" name="email" placeholder="client@gmail.com">
                             <div class="error-msg" id="err-houseEmail"></div>
                         </div>
 
@@ -154,38 +154,38 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="address">Адреса:</label>
-                            <input type="text" id="address" name="address" placeholder="Місто, вулиця">
+                            <label for="address">Адреса доставки (Нова Пошта):</label>
+                            <input type="text" id="address" name="address" placeholder="Місто, № відділення">
                             <div class="error-msg" id="err-address"></div>
                         </div>
 
                         <hr class="form-divider">
 
                         <div class="form-group radio-group">
-                            <label>Оберіть тип житла:</label>
-                            <label><input type="radio" name="housingType" value="Квартира"> Квартира</label>
-                            <label><input type="radio" name="housingType" value="Таунхаус"> Таунхаус</label>
-                            <label><input type="radio" name="housingType" value="Будинок"> Будинок</label>
+                            <label>Оберіть категорію товару:</label>
+                            <label><input type="radio" name="housingType" value="Смартфон"> Смартфон</label>
+                            <label><input type="radio" name="housingType" value="Навушники"> Навушники</label>
+                            <label><input type="radio" name="housingType" value="Годинник"> Годинник</label>
                             <div class="error-msg" id="err-housingType"></div>
                         </div>
 
                         <div class="form-group">
-                            <label for="roomsCount">Оберіть кількість кімнат:</label>
+                            <label for="roomsCount">Оберіть об'єм пам'яті:</label>
                             <select id="roomsCount" name="roomsCount">
-                                <option value="1">Однокімнатні</option>
-                                <option value="2">Двокімнатні</option>
-                                <option value="3">Трикімнатні</option>
-                                <option value="4+">Чотири і більше</option>
+                                <option value="64">64 GB</option>
+                                <option value="128">128 GB</option>
+                                <option value="256">256 GB</option>
+                                <option value="512">512 GB / 1 TB</option>
                             </select>
                         </div>
 
                         <hr class="form-divider">
 
                         <div class="form-group">
-                            <label for="priceRange">Оберіть бажану ціну:</label>
+                            <label for="priceRange">Оберіть бажаний бюджет:</label>
                             <div class="range-wrapper">
-                                <input type="range" id="priceRange" name="priceRange" min="1000" max="10000" step="100" value="3500" oninput="updatePriceLabel(this.value)">
-                                <span id="priceValue">3500$</span>
+                                <input type="range" id="priceRange" name="priceRange" min="2000" max="60000" step="1000" value="15000" oninput="updatePriceLabel(this.value)">
+                                <span id="priceValue">15000 грн</span>
                             </div>
                         </div>
 
@@ -193,39 +193,39 @@
 
                         <div class="form-group checkbox-group">
                             <label>
-                                <input type="checkbox" id="hasPets" name="hasPets"> Є домашні тварини
+                                <input type="checkbox" id="hasPets" name="hasPets"> Потрібна подарункова упаковка
                             </label>
                         </div>
 
                         <div class="form-group">
-                            <label for="wishes">Додаткові побажання:</label>
-                            <textarea id="wishes" name="wishes" rows="3" placeholder="Вкажіть додаткові вимоги..."></textarea>
+                            <label for="wishes">Коментар до замовлення:</label>
+                            <textarea id="wishes" name="wishes" rows="3" placeholder="Вкажіть колір або інші побажання..."></textarea>
                         </div>
 
                         <div class="btn-group">
-                            <button type="submit" class="btn btn-primary">Відправити</button>
+                            <button type="submit" class="btn btn-primary">Замовити</button>
                             <button type="reset" class="btn btn-secondary">Скасувати</button>
                         </div>
                         <div class="success-msg" id="houseFormSuccess"></div>
                     </form>
                 </div>
 
-                <!-- ЗАВДАННЯ 5: Форми реєстрації та авторизації за тематикою сайту -->
+                <!-- ЗАВДАННЯ 5: Форми реєстрації та авторизації покупця -->
                 <div class="auth-wrapper">
 
                     <!-- Форма реєстрації -->
                     <div class="form-box">
-                        <h3>Реєстрація спеціаліста на порталі</h3>
+                        <h3>Реєстрація покупця в магазині</h3>
                         <form id="registerForm" onsubmit="return validateRegisterForm()">
                             <div class="form-group">
-                                <label for="regLogin">Логін користувача:</label>
+                                <label for="regLogin">Логін покупця:</label>
                                 <input type="text" id="regLogin" placeholder="Мінімум 4 символи">
                                 <div class="error-msg" id="err-regLogin"></div>
                             </div>
 
                             <div class="form-group">
                                 <label for="regEmail">Електронна пошта (Email):</label>
-                                <input type="text" id="regEmail" placeholder="developer@example.com">
+                                <input type="text" id="regEmail" placeholder="buyer@example.com">
                                 <div class="error-msg" id="err-regEmail"></div>
                             </div>
 
@@ -248,7 +248,7 @@
 
                     <!-- Форма авторизації -->
                     <div class="form-box">
-                        <h3>Авторизація в системі</h3>
+                        <h3>Авторизація покупця</h3>
                         <form id="loginForm" onsubmit="return validateLoginForm()">
                             <div class="form-group">
                                 <label for="email">Email:</label>

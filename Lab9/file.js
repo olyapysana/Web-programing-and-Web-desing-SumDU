@@ -1,3 +1,4 @@
+// Батьківський клас Product
 class Product {
     constructor(name, category, amount, image) {
         this.name = name;
@@ -11,149 +12,154 @@ class Product {
     }
 }
 
-class Shoe extends Product {
+// 3 дочірні класи для категорій «Портативна електроніка»
+class AudioDevice extends Product {
     constructor(name, amount, image) {
-        super(name, 'shoe', amount, image);
+        super(name, "audio", amount, image);
     }
 }
 
-class Grocerie extends Product {
+class PowerDevice extends Product {
     constructor(name, amount, image) {
-        super(name, 'grocerie', amount, image);
+        super(name, "power", amount, image);
     }
 }
 
+class PortableGadget extends Product {
+    constructor(name, amount, image) {
+        super(name, "gadgets", amount, image);
+    }
+}
+
+// Функція створює об'єкт відповідного класу
 function productFactory(item) {
-    if (item.category === 'shoe') {
-        return new Shoe(item.name, item.amount, item.image);
+    if (item.category === "audio") {
+        return new AudioDevice(item.name, item.amount, item.image);
+    } else if (item.category === "power") {
+        return new PowerDevice(item.name, item.amount, item.image);
+    } else if (item.category === "gadgets") {
+        return new PortableGadget(item.name, item.amount, item.image);
     }
-    if (item.category === 'grocerie') {
-        return new Grocerie(item.name, item.amount, item.image);
-    }
-    throw new Error(`Невідома категорія: ${item.category}`);
+
+    throw new Error(`Невідома категорія товару: ${item.category}`);
 }
 
+// Клас Кошик
 class Basket {
-    products = [];
+    constructor() {
+        this.products = [];
+    }
 
     add(product) {
-        const addedTime = new Date().toLocaleTimeString('uk-UA', {
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit'
-        });
+        // Фіксуємо час додавання товару
+        let now = new Date();
+        let timeString = now.toLocaleTimeString("uk-UA");
 
-        const entry = {
-            product: product,
-            addedAt: addedTime
+        // Створюємо запис для кошика
+        let basketItem = {
+            product: { ...product },
+            addedTime: timeString
         };
 
-        this.products.push(entry);
+        this.products.push(basketItem);
         product.addToBasket();
-        this.renderAddedItem(entry);
+
+        // Виводимо вміст кошика на вебсторінку
+        this.renderBasket();
     }
 
-    renderAddedItem(entry) {
-        const basketList = document.getElementById('basket-list');
-        const basketCounter = document.getElementById('basket-counter');
+    renderBasket() {
+        let basketList = document.getElementById("basket-list");
+        let basketCount = document.getElementById("basket-count");
+        basketList.innerHTML = "";
 
-        const emptyPlaceholder = basketList.querySelector('.cart-empty');
-        if (emptyPlaceholder) {
-            emptyPlaceholder.remove();
-        }
-
-        const li = document.createElement('li');
-        li.className = 'cart-item';
-        li.innerHTML = `
-            <img src="${entry.product.image}" alt="${entry.product.name}">
-            <div class="cart-item-info">
-                <div class="cart-item-title">${entry.product.name}</div>
-                <div class="cart-item-meta">Час додавання: <strong>${entry.addedAt}</strong> • ${entry.product.category}</div>
-            </div>
-        `;
-
-        basketList.appendChild(li);
-        basketCounter.textContent = `${this.products.length} од.`;
-    }
-}
-
-class Store {
-    products = [];
-
-    constructor() {
-        this.basket = new Basket();
-    }
-
-    fillStoreWithProducts(data) {
-        this.products = data.map(item => productFactory(item));
-        this.renderProducts();
-    }
-
-    addToBasket(index) {
-        const product = this.products[index];
-
-        if (!product || product.amount <= 0) {
+        if (this.products.length === 0) {
+            basketList.innerHTML = "<p class='empty-msg'>Кошик порожній. Додайте товари з каталогу.</p>";
+            basketCount.innerHTML = "0";
             return;
         }
 
-        product.amount -= 1;
-
-        const singleUnit = productFactory({
-            name: product.name,
-            category: product.category,
-            amount: 1,
-            image: product.image
-        });
-
-        this.basket.add(singleUnit);
-        this.renderProducts();
-    }
-
-    renderProducts() {
-        const container = document.getElementById('products-container');
-        container.innerHTML = '';
-
-        this.products.forEach((product, index) => {
-            const isEmpty = product.amount <= 0;
-
-            const card = document.createElement('article');
-            card.className = 'gadget-card';
-            card.innerHTML = `
-                <img class="gadget-img" src="${product.image}" alt="${product.name}">
-                <div class="gadget-body">
-                    <span class="tag ${product.category}">${product.category}</span>
-                    <h3 class="gadget-name">${product.name}</h3>
-                    <p class="gadget-stock ${isEmpty ? 'out' : ''}">
-                        Залишок: <strong>${product.amount} шт.</strong>
-                    </p>
-                    <button class="btn-buy" ${isEmpty ? 'disabled' : ''}>
-                        ${isEmpty ? 'Закінчився' : 'У кошик'}
-                    </button>
+        for (let i = 0; i < this.products.length; i++) {
+            let item = this.products[i];
+            basketList.innerHTML += `
+                <div class="basket-item">
+                    <div>
+                        <strong>${i + 1}. ${item.product.name}</strong><br>
+                        <small>Категорія: ${item.product.category}</small>
+                    </div>
+                    <div class="basket-time">Додано о: ${item.addedTime}</div>
                 </div>
             `;
+        }
 
-            const btn = card.querySelector('.btn-buy');
-            btn.addEventListener('click', () => this.addToBasket(index));
-
-            container.appendChild(card);
-        });
+        basketCount.innerHTML = this.products.length;
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    const store = new Store();
+// Головний клас Store
+class Store {
+    constructor() {
+        this.products = [];
+        this.basket = new Basket();
+    }
 
-    fetch('products.json')
-        .then(res => {
-            if (!res.ok) {
-                throw new Error('Не вдалося завантажити products.json');
-            }
-            return res.json();
-        })
-        .then(data => store.fillStoreWithProducts(data))
-        .catch(err => {
-            console.error(err);
-            document.getElementById('products-container').innerHTML =
-                `<p style="color: #f87171;">Помилка завантаження products.json. Запустіть сторінку через локальний сервер (наприклад, Live Server).</p>`;
-        });
-});
+    // Заповнюємо магазин товарами через productFactory
+    fillStoreWithProducts(jsonData) {
+        for (let i = 0; i < jsonData.length; i++) {
+            let productObj = productFactory(jsonData[i]);
+            this.products.push(productObj);
+        }
+        this.renderStore();
+    }
+
+    // Додавання товару в кошик зі зменшенням кількості в магазині
+    addProductToBasket(index) {
+        let selectedProduct = this.products[index];
+
+        // Не можна додати більше товарів, ніж є в магазині
+        if (selectedProduct.amount > 0) {
+            selectedProduct.amount -= 1;
+            this.basket.add(selectedProduct);
+            this.renderStore(); // Оновлюємо залишок на картці товару
+        } else {
+            alert(`Товар «${selectedProduct.name}» закінчився на складі!`);
+        }
+    }
+
+    // Виведення товарів магазину на сторінку
+    renderStore() {
+        let catalogContainer = document.getElementById("catalog-container");
+        catalogContainer.innerHTML = "";
+
+        for (let i = 0; i < this.products.length; i++) {
+            let p = this.products[i];
+            let disabledAttr = p.amount === 0 ? "disabled" : "";
+            let btnText = p.amount === 0 ? "Немає в наявності" : "Додати у кошик";
+
+            catalogContainer.innerHTML += `
+                <div class="product-card">
+                    <span class="badge">${p.category}</span>
+                    <img src="${p.image}" alt="${p.name}">
+                    <h3>${p.name}</h3>
+                    <p class="amount">В наявності: <strong>${p.amount} шт.</strong></p>
+                    <button onclick="store.addProductToBasket(${i})" ${disabledAttr}>${btnText}</button>
+                </div>
+            `;
+        }
+    }
+}
+
+// Створення об'єкта магазину
+const store = new Store();
+
+// Завантаження даних з JSON при завантаженні сторінки
+window.onload = async function () {
+    try {
+        const response = await fetch("products.json");
+        const productsData = await response.json();
+
+        store.fillStoreWithProducts(productsData);
+    } catch (error) {
+        console.error("Помилка завантаження товарів:", error);
+    }
+};

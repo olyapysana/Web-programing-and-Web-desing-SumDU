@@ -1,38 +1,38 @@
 [
     {
         "name": "Бездротові навушники SoundPro ANC",
-        "category": "portable",
+        "category": "audio",
         "amount": 5,
         "image": "headphones.jpg"
     },
     {
         "name": "Портативна колонка Pulse Mini",
-        "category": "portable",
+        "category": "audio",
         "amount": 3,
         "image": "speaker.jpg"
     },
     {
-        "name": "Екшн-камера ActionCam 4K",
-        "category": "portable",
-        "amount": 2,
-        "image": "actioncam.jpg"
-    },
-    {
         "name": "PowerBank 20000mAh PD 65W",
-        "category": "automation",
-        "amount": 7,
+        "category": "power",
+        "amount": 6,
         "image": "powerbank.jpg"
     },
     {
-        "name": "Електронна книга ReaderLite",
-        "category": "automation",
-        "amount": 4,
-        "image": "ereader.jpg"
+        "name": "Портативна сонячна панель SolarGo 30W",
+        "category": "power",
+        "amount": 2,
+        "image": "solar.jpg"
     },
     {
-        "name": "Кишеньковий геймпад GamePad Pro",
-        "category": "automation",
+        "name": "Екшн-камера ActionCam 4K",
+        "category": "gadgets",
+        "amount": 4,
+        "image": "actioncam.jpg"
+    },
+    {
+        "name": "Електронна книга ReaderLite",
+        "category": "gadgets",
         "amount": 3,
-        "image": "gamepad.jpg"
+        "image": "ereader.jpg"
     }
 ]

@@ -7,25 +7,24 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <header>
         <h1><span>PocketTech</span> — Портативна електроніка</h1>
         <p>Лабораторна робота №9 • Робота з JavaScript об'єктами</p>
     </header>
 
-    <main class="layout">
+    <main class="store-layout">
         <section>
-            <div id="products-container" class="catalog-grid"></div>
+            <div id="catalog-container" class="catalog-grid"></div>
         </section>
 
-        <aside class="cart-panel">
-            <div class="cart-top">
+        <aside class="basket-box">
+            <div class="basket-header">
                 <h2>Кошик</h2>
-                <span id="basket-counter" class="cart-badge">0 од.</span>
+                <span id="basket-count" class="basket-badge">0</span>
             </div>
-            <ul id="basket-list" class="cart-items">
-                <li class="cart-empty">Кошик порожній. Додайте пристрій зі списку.</li>
-            </ul>
+            <div id="basket-list" class="basket-list">
+                <p class="empty-msg">Кошик порожній. Додайте товари з каталогу.</p>
+            </div>
         </aside>
     </main>
 

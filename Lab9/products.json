@@ -1,38 +1,38 @@
 [
     {
-        "name": "Бездротові навушники SoundPro",
-        "category": "shoe",
+        "name": "Бездротові навушники SoundPro ANC",
+        "category": "portable",
         "amount": 5,
-        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80"
+        "image": "headphones.jpg"
     },
     {
-        "name": "Портативна колонка Pulsоооооооe Mini",
-        "category": "shoe",
+        "name": "Портативна колонка Pulse Mini",
+        "category": "portable",
         "amount": 3,
-        "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&q=80"
+        "image": "speaker.jpg"
     },
     {
         "name": "Екшн-камера ActionCam 4K",
-        "category": "shoe",
+        "category": "portable",
         "amount": 2,
-        "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400&q=80"
+        "image": "actioncam.jpg"
     },
     {
         "name": "PowerBank 20000mAh PD 65W",
-        "category": "grocerie",
+        "category": "automation",
         "amount": 7,
-        "image": "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=400&q=80"
+        "image": "powerbank.jpg"
     },
     {
         "name": "Електронна книга ReaderLite",
-        "category": "grocerie",
+        "category": "automation",
         "amount": 4,
-        "image": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&q=80"
+        "image": "ereader.jpg"
     },
     {
         "name": "Кишеньковий геймпад GamePad Pro",
-        "category": "grocerie",
+        "category": "automation",
         "amount": 3,
-        "image": "https://images.unsplash.com/photo-1592840496694-26d035ef52b3?w=400&q=80"
+        "image": "gamepad.jpg"
     }
 ]

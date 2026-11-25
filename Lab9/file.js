@@ -1,4 +1,3 @@
-// Батьківський клас Product
 class Product {
     constructor(name, category, amount, image) {
         this.name = name;
@@ -12,7 +11,6 @@ class Product {
     }
 }
 
-// 3 дочірні класи для категорій «Портативна електроніка»
 class AudioDevice extends Product {
     constructor(name, amount, image) {
         super(name, "audio", amount, image);
@@ -31,7 +29,6 @@ class PortableGadget extends Product {
     }
 }
 
-// Функція створює об'єкт відповідного класу
 function productFactory(item) {
     if (item.category === "audio") {
         return new AudioDevice(item.name, item.amount, item.image);
@@ -44,18 +41,15 @@ function productFactory(item) {
     throw new Error(`Невідома категорія товару: ${item.category}`);
 }
 
-// Клас Кошик
 class Basket {
     constructor() {
         this.products = [];
     }
 
     add(product) {
-        // Фіксуємо час додавання товару
         let now = new Date();
         let timeString = now.toLocaleTimeString("uk-UA");
 
-        // Створюємо запис для кошика
         let basketItem = {
             product: { ...product },
             addedTime: timeString
@@ -64,7 +58,6 @@ class Basket {
         this.products.push(basketItem);
         product.addToBasket();
 
-        // Виводимо вміст кошика на вебсторінку
         this.renderBasket();
     }
 
@@ -96,14 +89,12 @@ class Basket {
     }
 }
 
-// Головний клас Store
 class Store {
     constructor() {
         this.products = [];
         this.basket = new Basket();
     }
 
-    // Заповнюємо магазин товарами через productFactory
     fillStoreWithProducts(jsonData) {
         for (let i = 0; i < jsonData.length; i++) {
             let productObj = productFactory(jsonData[i]);
@@ -112,21 +103,17 @@ class Store {
         this.renderStore();
     }
 
-    // Додавання товару в кошик зі зменшенням кількості в магазині
     addProductToBasket(index) {
         let selectedProduct = this.products[index];
 
-        // Не можна додати більше товарів, ніж є в магазині
         if (selectedProduct.amount > 0) {
             selectedProduct.amount -= 1;
             this.basket.add(selectedProduct);
-            this.renderStore(); // Оновлюємо залишок на картці товару
+            this.renderStore(); 
         } else {
             alert(`Товар «${selectedProduct.name}» закінчився на складі!`);
         }
     }
-
-    // Виведення товарів магазину на сторінку
     renderStore() {
         let catalogContainer = document.getElementById("catalog-container");
         catalogContainer.innerHTML = "";
@@ -149,10 +136,8 @@ class Store {
     }
 }
 
-// Створення об'єкта магазину
 const store = new Store();
 
-// Завантаження даних з JSON при завантаженні сторінки
 window.onload = async function () {
     try {
         const response = await fetch("products.json");

@@ -2,8 +2,8 @@
     --bg-page: #eef3f8;
     --card-bg: #ffffff;
     --navy-title: #193b5b;
-    --sky-top: #63b3ed;
-    --sky-bottom: #3182ce;
+    --blue-top: #1e3a8a;
+    --blue-bottom: #1d4ed8;
     --primary-btn: #1d6fd8;
     --primary-btn-hover: #1558b0;
     --text-dark: #1e293b;
@@ -25,19 +25,19 @@ body {
     min-height: 100vh;
 }
 
-/* Блакитна шапка */
+/* Синя шапка */
 .hero-banner {
-    background: linear-gradient(135deg, var(--sky-top), var(--sky-bottom));
+    background: linear-gradient(135deg, var(--blue-top), var(--blue-bottom));
     color: #ffffff;
     padding: 46px 20px;
     text-align: center;
-    box-shadow: 0 3px 12px rgba(25, 59, 91, 0.14);
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.2);
 }
 
 .hero-banner h1 {
     font-size: 2.1rem;
     font-weight: 700;
-    text-shadow: 0 2px 8px rgba(15, 35, 60, 0.25);
+    text-shadow: 0 2px 8px rgba(10, 20, 45, 0.3);
 }
 
 .hero-banner p {

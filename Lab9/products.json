@@ -1,6 +1,6 @@
 [
     {
-        "name": "Бездротові навушники SoundPro ANC",
+        "name": "Бездротові навушники SoundPro",
         "category": "audio",
         "amount": 5,
         "image": "headphones.jpg"
@@ -12,7 +12,7 @@
         "image": "speaker.jpg"
     },
     {
-        "name": "PowerBank 20000mAh PD 65W",
+        "name": "PowerBank 20000mAh",
         "category": "power",
         "amount": 6,
         "image": "powerbank.jpg"

@@ -3,21 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Лабораторна робота №9 — Портативна електроніка</title>
+    <title>Магазин «Портативна електроніка» — Лабораторна робота №9</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1><span>PocketTech</span> — Портативна електроніка</h1>
-        <p>Лабораторна робота №9 • Робота з JavaScript об'єктами</p>
+    <header class="hero-banner">
+        <div class="hero-overlay">
+            <h1>Магазин «Портативна електроніка»</h1>
+            <p>Лабораторна робота №9 • Робота з JavaScript об'єктами</p>
+        </div>
     </header>
 
+    <nav class="top-nav">
+        <div class="nav-inner">
+            <a href="#catalog">Головна</a>
+            <a href="#catalog">Каталог</a>
+            <a href="#basket">Кошик</a>
+        </div>
+    </nav>
+
     <main class="store-layout">
-        <section>
+        <section id="catalog" class="catalog-box">
+            <h2 class="catalog-title">Каталог товарів</h2>
             <div id="catalog-container" class="catalog-grid"></div>
         </section>
 
-        <aside class="basket-box">
+        <aside id="basket" class="basket-box">
             <div class="basket-header">
                 <h2>Кошик</h2>
                 <span id="basket-count" class="basket-badge">0</span>

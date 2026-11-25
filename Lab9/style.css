@@ -24,7 +24,6 @@ body {
     min-height: 100vh;
 }
 
-/* Шапка у потрібному темно-синьому відтінку */
 .hero-banner {
     background: linear-gradient(135deg, #173448, #1f455f);
     color: #ffffff;

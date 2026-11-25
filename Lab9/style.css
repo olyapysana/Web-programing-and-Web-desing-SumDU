@@ -1,11 +1,10 @@
 :root {
     --bg-page: #eef3f8;
     --card-bg: #ffffff;
-    --navy-title: #1e3a8a;
-    --blue-top: #1d4ed8;
-    --blue-bottom: #1e40af;
-    --primary-btn: #1d4ed8;
-    --primary-btn-hover: #1e40af;
+    --navy-main: #173448;
+    --navy-hover: #1f445e;
+    --primary-btn: #173448;
+    --primary-btn-hover: #214964;
     --text-dark: #1e293b;
     --text-muted: #5c6b7c;
     --border-light: #dce5ef;
@@ -25,25 +24,25 @@ body {
     min-height: 100vh;
 }
 
-/* Насичена синя шапка */
+/* Шапка у потрібному темно-синьому відтінку */
 .hero-banner {
-    background: linear-gradient(135deg, var(--blue-top), var(--blue-bottom));
+    background: linear-gradient(135deg, #173448, #1f455f);
     color: #ffffff;
     padding: 46px 20px;
     text-align: center;
-    box-shadow: 0 3px 12px rgba(30, 64, 175, 0.24);
+    box-shadow: 0 3px 12px rgba(23, 52, 72, 0.22);
 }
 
 .hero-banner h1 {
     font-size: 2.1rem;
     font-weight: 700;
-    text-shadow: 0 2px 6px rgba(15, 23, 42, 0.22);
+    text-shadow: 0 2px 6px rgba(10, 22, 32, 0.25);
 }
 
 .hero-banner p {
     margin-top: 8px;
     font-size: 0.98rem;
-    color: rgba(255, 255, 255, 0.94);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 /* Основний макет */
@@ -68,13 +67,13 @@ body {
     border: 1px solid var(--border-light);
     border-radius: 10px;
     padding: 22px;
-    box-shadow: 0 4px 14px rgba(25, 59, 91, 0.06);
+    box-shadow: 0 4px 14px rgba(23, 52, 72, 0.06);
 }
 
 .catalog-title {
     font-size: 1.35rem;
     font-weight: 700;
-    color: var(--navy-title);
+    color: var(--navy-main);
     margin-bottom: 18px;
     padding-bottom: 10px;
     border-bottom: 2px solid #e6eef7;
@@ -94,14 +93,14 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+    box-shadow: 0 2px 8px rgba(23, 52, 72, 0.05);
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .product-card:hover {
     transform: translateY(-3px);
-    border-color: #93c5fd;
-    box-shadow: 0 8px 18px rgba(29, 78, 216, 0.14);
+    border-color: #7da1b8;
+    box-shadow: 0 8px 18px rgba(23, 52, 72, 0.14);
 }
 
 .badge {
@@ -112,9 +111,9 @@ body {
     letter-spacing: 0.4px;
     padding: 3px 9px;
     border-radius: 999px;
-    background-color: #dbeafe;
-    color: #1e40af;
-    border: 1px solid #bfdbfe;
+    background-color: #e3edf4;
+    color: var(--navy-main);
+    border: 1px solid #c3d5e2;
 }
 
 .product-card img {
@@ -170,7 +169,7 @@ body {
     border: 1px solid var(--border-light);
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 14px rgba(25, 59, 91, 0.06);
+    box-shadow: 0 4px 14px rgba(23, 52, 72, 0.06);
     position: sticky;
     top: 20px;
 }
@@ -186,7 +185,7 @@ body {
 
 .basket-header h2 {
     font-size: 1.2rem;
-    color: var(--navy-title);
+    color: var(--navy-main);
 }
 
 .basket-badge {
@@ -229,7 +228,7 @@ body {
 
 .basket-time {
     font-size: 0.76rem;
-    color: var(--primary-btn);
+    color: var(--navy-main);
     font-weight: 600;
     white-space: nowrap;
 }

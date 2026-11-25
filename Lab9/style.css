@@ -1,7 +1,7 @@
 :root {
     --bg-page: #eef3f8;
     --card-bg: #ffffff;
-    --navy-bar: #193b5b;
+    --navy-title: #193b5b;
     --sky-top: #63b3ed;
     --sky-bottom: #3182ce;
     --primary-btn: #1d6fd8;
@@ -25,13 +25,13 @@ body {
     min-height: 100vh;
 }
 
-/* Блакитна шапка як на прикладі */
+/* Блакитна шапка */
 .hero-banner {
     background: linear-gradient(135deg, var(--sky-top), var(--sky-bottom));
     color: #ffffff;
     padding: 46px 20px;
     text-align: center;
-    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.25);
+    box-shadow: 0 3px 12px rgba(25, 59, 91, 0.14);
 }
 
 .hero-banner h1 {
@@ -44,35 +44,6 @@ body {
     margin-top: 8px;
     font-size: 0.98rem;
     color: rgba(255, 255, 255, 0.92);
-}
-
-/* Темно-синя панель навігації */
-.top-nav {
-    background-color: var(--navy-bar);
-    padding: 0 24px;
-    box-shadow: 0 2px 8px rgba(25, 59, 91, 0.18);
-}
-
-.nav-inner {
-    max-width: 1240px;
-    margin: 0 auto;
-    display: flex;
-    gap: 28px;
-}
-
-.nav-inner a {
-    color: #ffffff;
-    text-decoration: none;
-    padding: 13px 4px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    border-bottom: 3px solid transparent;
-    transition: border-color 0.2s ease, color 0.2s ease;
-}
-
-.nav-inner a:hover {
-    color: #bae6fd;
-    border-bottom-color: #7dd3fc;
 }
 
 /* Основний макет */
@@ -103,7 +74,7 @@ body {
 .catalog-title {
     font-size: 1.35rem;
     font-weight: 700;
-    color: var(--navy-bar);
+    color: var(--navy-title);
     margin-bottom: 18px;
     padding-bottom: 10px;
     border-bottom: 2px solid #e6eef7;
@@ -215,7 +186,7 @@ body {
 
 .basket-header h2 {
     font-size: 1.2rem;
-    color: var(--navy-bar);
+    color: var(--navy-title);
 }
 
 .basket-badge {

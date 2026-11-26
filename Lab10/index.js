@@ -1,6 +1,6 @@
 const API_BASE = 'https://dummyjson.com';
 
-const categoriesListEl = document.getElementById('categories-list');
+const categoriesListEl = document.getElementById('categories-list'); /////////
 const productsGridEl = document.getElementById('products-grid');
 const productsHeadingEl = document.getElementById('products-heading');
 const productsCountEl = document.getElementById('products-count');

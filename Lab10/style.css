@@ -3,9 +3,9 @@
     --bg-card: #ffffff;
     --bg-categories: #ffe5cf;
     --border-categories: #e4b68c;
-    --bg-see-all: #86efac;
-    --border-see-all: #4ade80;
-    --see-all-active: #16a34a;
+    --bg-see-all: #00cc99;
+    --border-see-all: #00b386;
+    --see-all-active: #008f6b;
     --bg-products: #fff6cf;
     --border-products: #e5d488;
     --accent: #2563eb;
@@ -129,16 +129,16 @@ body {
     padding: 14px 16px;
     font-size: 1rem;
     font-weight: 700;
-    color: #14532d;
+    color: #06281e;
     cursor: pointer;
     box-shadow: var(--shadow);
     transition: transform 0.15s ease, background-color 0.18s ease, box-shadow 0.18s ease;
 }
 
 .see-all-btn:hover {
-    background-color: #4ade80;
+    background-color: #00b386;
     transform: translateY(-1px);
-    box-shadow: 0 8px 20px rgba(22, 163, 74, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 204, 153, 0.25);
 }
 
 .see-all-btn.active {

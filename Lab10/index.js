@@ -1,6 +1,6 @@
 const API_BASE = 'https://dummyjson.com';
 
-const categoriesListEl = document.getElementById('categories-list'); /////////
+const categoriesListEl = document.getElementById('categories-list');
 const productsGridEl = document.getElementById('products-grid');
 const productsHeadingEl = document.getElementById('products-heading');
 const productsCountEl = document.getElementById('products-count');
@@ -13,9 +13,9 @@ const closeModalBtnEl = document.getElementById('close-modal-btn');
 
 let activeCategorySlug = null;
 
-function setStatus(message, isError = false) {
-    statusTextEl.textContent = message;
+function updateHeaderCount(count, isError = false) {
     statusTextEl.classList.toggle('error', isError);
+    statusTextEl.textContent = isError ? 'Помилка завантаження' : `Товарів: ${count}`;
 }
 
 function setActiveCategoryUI(slug) {
@@ -55,6 +55,7 @@ function renderCategories(categories) {
 function renderProducts(products, titleText) {
     productsHeadingEl.textContent = titleText;
     productsCountEl.textContent = `Знайдено: ${products.length}`;
+    updateHeaderCount(products.length);
     productsGridEl.innerHTML = '';
 
     if (!products.length) {
@@ -136,7 +137,6 @@ function closeProductModal() {
 
 async function fetchProducts() {
     try {
-        setStatus('Завантаження усіх товарів...');
         const res = await fetch(`${API_BASE}/products?limit=100`);
         if (!res.ok) {
             throw new Error(`Помилка HTTP: ${res.status}`);
@@ -147,17 +147,15 @@ async function fetchProducts() {
         console.log('All products:', data);
         setActiveCategoryUI(null);
         renderProducts(products, 'Усі товари');
-        setStatus('Готово');
         return products;
     } catch (error) {
         console.error('Помилка під час завантаження товарів:', error);
-        setStatus('Не вдалося завантажити товари', true);
+        updateHeaderCount(0, true);
     }
 }
 
 async function fetchProductById(id) {
     try {
-        setStatus(`Завантаження товару #${id}...`);
         const res = await fetch(`${API_BASE}/products/${id}`);
         if (!res.ok) {
             throw new Error(`Помилка HTTP: ${res.status}`);
@@ -166,17 +164,14 @@ async function fetchProductById(id) {
 
         console.log('Product by id:', product);
         openProductModal(product);
-        setStatus('Готово');
         return product;
     } catch (error) {
         console.error(`Помилка під час завантаження товару ${id}:`, error);
-        setStatus('Не вдалося завантажити деталі товару', true);
     }
 }
 
 async function fetchCategories() {
     try {
-        setStatus('Завантаження категорій...');
         const res = await fetch(`${API_BASE}/products/categories`);
         if (!res.ok) {
             throw new Error(`Помилка HTTP: ${res.status}`);
@@ -185,17 +180,14 @@ async function fetchCategories() {
 
         console.log('Categories:', categories);
         renderCategories(categories);
-        setStatus('Готово');
         return categories;
     } catch (error) {
         console.error('Помилка під час завантаження категорій:', error);
-        setStatus('Не вдалося завантажити категорії', true);
     }
 }
 
 async function fetchProductsByCategory(slug, categoryName) {
     try {
-        setStatus(`Завантаження категорії "${categoryName}"...`);
         const res = await fetch(`${API_BASE}/products/category/${encodeURIComponent(slug)}`);
         if (!res.ok) {
             throw new Error(`Помилка HTTP: ${res.status}`);
@@ -206,11 +198,10 @@ async function fetchProductsByCategory(slug, categoryName) {
         console.log(`Products in category ${slug}:`, data);
         setActiveCategoryUI(slug);
         renderProducts(products, `Категорія: ${categoryName}`);
-        setStatus('Готово');
         return products;
     } catch (error) {
         console.error(`Помилка під час завантаження категорії ${slug}:`, error);
-        setStatus('Не вдалося завантажити товари категорії', true);
+        updateHeaderCount(0, true);
     }
 }
 
@@ -232,4 +223,5 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
+// Під час завантаження сайту робимо запити на категорії та всі товари
 Promise.all([fetchCategories(), fetchProducts()]);

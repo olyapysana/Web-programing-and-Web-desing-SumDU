@@ -232,5 +232,4 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
-// Під час завантаження сайту робимо запити на категорії та всі товари
 Promise.all([fetchCategories(), fetchProducts()]);

@@ -213,13 +213,11 @@ body {
     color: #111827;
 }
 
+/* Повний текст опису без обрізання */
 .product-desc {
     font-size: 0.84rem;
     color: #6b7280;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    overflow-wrap: break-word;
 }
 
 .product-footer {

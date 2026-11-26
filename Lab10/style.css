@@ -1,10 +1,11 @@
 :root {
-    --bg-page: #f6f7fb;
+    --bg-page: #dff2fe;
     --bg-card: #ffffff;
     --bg-categories: #ffe5cf;
     --border-categories: #e4b68c;
-    --bg-see-all: #ddd2ec;
-    --border-see-all: #b4a1cf;
+    --bg-see-all: #86efac;
+    --border-see-all: #4ade80;
+    --see-all-active: #16a34a;
     --bg-products: #fff6cf;
     --border-products: #e5d488;
     --accent: #2563eb;
@@ -128,20 +129,21 @@ body {
     padding: 14px 16px;
     font-size: 1rem;
     font-weight: 700;
-    color: var(--text-main);
+    color: #14532d;
     cursor: pointer;
     box-shadow: var(--shadow);
-    transition: transform 0.15s ease, background-color 0.18s ease;
+    transition: transform 0.15s ease, background-color 0.18s ease, box-shadow 0.18s ease;
 }
 
 .see-all-btn:hover {
-    filter: brightness(0.97);
+    background-color: #4ade80;
     transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(22, 163, 74, 0.2);
 }
 
 .see-all-btn.active {
-    background-color: var(--accent);
-    border-color: var(--accent);
+    background-color: var(--see-all-active);
+    border-color: var(--see-all-active);
     color: #ffffff;
 }
 

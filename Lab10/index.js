@@ -1,4 +1,4 @@
-const API_BASE = 'https://dummyjson.com';
+const API_BASE = 'https://dummyjson.com'; ///////
 
 const categoriesListEl = document.getElementById('categories-list');
 const productsGridEl = document.getElementById('products-grid');

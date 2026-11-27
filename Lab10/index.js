@@ -5,13 +5,6 @@ const productsGridEl = document.getElementById("products-grid");
 const productsTitleEl = document.getElementById("products-title");
 const productsCountEl = document.getElementById("products-count");
 const seeAllBtnEl = document.getElementById("see-all-btn");
-const statusTextEl = document.getElementById("status-text");
-
-function setStatus(message) {
-    if (statusTextEl) {
-        statusTextEl.textContent = message;
-    }
-}
 
 function setActiveCategoryButton(slugOrNull) {
     const buttons = categoriesListEl.querySelectorAll(".category-btn");
@@ -82,7 +75,6 @@ function renderProducts(products, titleText) {
 
 async function fetchCategories() {
     try {
-        setStatus("Завантаження категорій...");
         const res = await fetch(`${BASE_URL}/products/categories`);
         if (!res.ok) {
             throw new Error(`Помилка завантаження категорій: ${res.status}`);
@@ -94,14 +86,12 @@ async function fetchCategories() {
         return categories;
     } catch (error) {
         console.error(error);
-        setStatus("Не вдалося завантажити категорії.");
         categoriesListEl.innerHTML = `<li class="empty-state">Помилка завантаження категорій</li>`;
     }
 }
 
 async function fetchProducts(limit = 0) {
     try {
-        setStatus("Завантаження всіх товарів...");
         const url = `${BASE_URL}/products?limit=${limit}`;
         const res = await fetch(url);
         if (!res.ok) {
@@ -113,18 +103,15 @@ async function fetchProducts(limit = 0) {
 
         setActiveCategoryButton(null);
         renderProducts(data.products, "Усі товари");
-        setStatus("Дані успішно завантажено");
         return data.products;
     } catch (error) {
         console.error(error);
-        setStatus("Помилка під час завантаження товарів.");
         productsGridEl.innerHTML = `<p class="empty-state">Не вдалося завантажити товари.</p>`;
     }
 }
 
 async function fetchProductsByCategory(categorySlug, categoryLabel = categorySlug) {
     try {
-        setStatus(`Завантаження категорії "${categoryLabel}"...`);
         const res = await fetch(`${BASE_URL}/products/category/${encodeURIComponent(categorySlug)}`);
         if (!res.ok) {
             throw new Error(`Помилка завантаження категорії ${categorySlug}: ${res.status}`);
@@ -135,11 +122,9 @@ async function fetchProductsByCategory(categorySlug, categoryLabel = categorySlu
 
         setActiveCategoryButton(categorySlug);
         renderProducts(data.products, `Категорія: ${categoryLabel}`);
-        setStatus(`Відображено категорію "${categoryLabel}"`);
         return data.products;
     } catch (error) {
         console.error(error);
-        setStatus("Помилка під час завантаження товарів категорії.");
         productsGridEl.innerHTML = `<p class="empty-state">Не вдалося завантажити товари цієї категорії.</p>`;
     }
 }

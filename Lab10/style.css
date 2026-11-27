@@ -41,7 +41,6 @@ body {
     align-items: start;
 }
 
-/* Ліва колонка: категорії + See all */
 .sidebar {
     display: flex;
     flex-direction: column;

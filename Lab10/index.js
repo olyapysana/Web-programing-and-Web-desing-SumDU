@@ -1,227 +1,175 @@
-const API_BASE = 'https://dummyjson.com'; ///////
+const BASE_URL = "https://dummyjson.com";
 
-const categoriesListEl = document.getElementById('categories-list');
-const productsGridEl = document.getElementById('products-grid');
-const productsHeadingEl = document.getElementById('products-heading');
-const productsCountEl = document.getElementById('products-count');
-const statusTextEl = document.getElementById('status-text');
-const seeAllBtnEl = document.getElementById('see-all-btn');
+const categoriesListEl = document.getElementById("categories-list");
+const productsGridEl = document.getElementById("products-grid");
+const productsTitleEl = document.getElementById("products-title");
+const productsCountEl = document.getElementById("products-count");
+const seeAllBtnEl = document.getElementById("see-all-btn");
+const statusTextEl = document.getElementById("status-text");
 
-const modalEl = document.getElementById('product-modal');
-const modalBodyEl = document.getElementById('modal-body');
-const closeModalBtnEl = document.getElementById('close-modal-btn');
-
-let activeCategorySlug = null;
-
-function updateHeaderCount(count, isError = false) {
-    statusTextEl.classList.toggle('error', isError);
-    statusTextEl.textContent = isError ? 'Помилка завантаження' : `Товарів: ${count}`;
+function setStatus(message) {
+    if (statusTextEl) {
+        statusTextEl.textContent = message;
+    }
 }
 
-function setActiveCategoryUI(slug) {
-    activeCategorySlug = slug;
-    const buttons = categoriesListEl.querySelectorAll('.category-btn');
+function setActiveCategoryButton(slugOrNull) {
+    const buttons = categoriesListEl.querySelectorAll(".category-btn");
     buttons.forEach((btn) => {
-        btn.classList.toggle('active', slug !== null && btn.dataset.slug === slug);
+        btn.classList.toggle("active", btn.dataset.slug === slugOrNull);
     });
-    seeAllBtnEl.classList.toggle('active', slug === null);
+
+    if (seeAllBtnEl) {
+        seeAllBtnEl.classList.toggle("active", slugOrNull === null);
+    }
 }
 
 function renderCategories(categories) {
-    categoriesListEl.innerHTML = '';
+    categoriesListEl.innerHTML = "";
 
-    categories.forEach((category) => {
-        const slug = typeof category === 'string' ? category : category.slug;
-        const name = typeof category === 'string' ? category : category.name;
+    categories.forEach((item) => {
+        const slug = typeof item === "string" ? item : item.slug;
+        const name = typeof item === "string" ? item.replace(/-/g, " ") : item.name;
 
-        const li = document.createElement('li');
-        const button = document.createElement('button');
-        button.type = 'button';
-        button.className = 'category-btn';
+        const li = document.createElement("li");
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "category-btn";
         button.dataset.slug = slug;
         button.textContent = name;
 
-        button.addEventListener('click', () => {
-            fetchProductsByCategory(slug, name);
+        button.addEventListener("click", async () => {
+            await fetchProductsByCategory(slug, name);
         });
 
         li.appendChild(button);
         categoriesListEl.appendChild(li);
     });
-
-    setActiveCategoryUI(activeCategorySlug);
 }
 
 function renderProducts(products, titleText) {
-    productsHeadingEl.textContent = titleText;
+    productsTitleEl.textContent = titleText;
     productsCountEl.textContent = `Знайдено: ${products.length}`;
-    updateHeaderCount(products.length);
-    productsGridEl.innerHTML = '';
+    productsGridEl.innerHTML = "";
 
-    if (!products.length) {
-        productsGridEl.innerHTML = '<p class="empty-state">У цій категорії товарів немає.</p>';
+    if (!products || products.length === 0) {
+        productsGridEl.innerHTML = `<p class="empty-state">Товарів не знайдено.</p>`;
         return;
     }
 
     products.forEach((product) => {
-        const card = document.createElement('article');
-        card.className = 'product-card';
+        const card = document.createElement("article");
+        card.className = "product-card";
 
-        const img = document.createElement('img');
-        img.className = 'product-image';
-        img.src = product.thumbnail;
-        img.alt = product.title;
-        img.loading = 'lazy';
+        const thumbnail = product.thumbnail || (product.images && product.images[0]) || "";
 
-        const body = document.createElement('div');
-        body.className = 'product-body';
-
-        const categoryLabel = document.createElement('span');
-        categoryLabel.className = 'product-category';
-        categoryLabel.textContent = product.category;
-
-        const title = document.createElement('h3');
-        title.className = 'product-title';
-        title.textContent = product.title;
-
-        const description = document.createElement('p');
-        description.className = 'product-description';
-        description.textContent = product.description;
-
-        const footer = document.createElement('div');
-        footer.className = 'product-footer';
-
-        const price = document.createElement('span');
-        price.className = 'product-price';
-        price.textContent = `$${product.price}`;
-
-        const rating = document.createElement('span');
-        rating.className = 'product-rating';
-        rating.textContent = `★ ${product.rating}`;
-
-        footer.append(price, rating);
-        body.append(categoryLabel, title, description, footer);
-        card.append(img, body);
-
-        card.addEventListener('click', () => {
-            fetchProductById(product.id);
-        });
+        card.innerHTML = `
+            <img src="${thumbnail}" alt="${product.title}" loading="lazy">
+            <div>
+                <div class="product-category">${product.category || ""}</div>
+                <h3 class="product-title">${product.title}</h3>
+            </div>
+            <p class="product-description">${product.description || ""}</p>
+            <div class="product-footer">
+                <span class="product-price">$${product.price}</span>
+                <span class="product-rating">★ ${product.rating ?? "—"}</span>
+            </div>
+        `;
 
         productsGridEl.appendChild(card);
     });
 }
 
-function openProductModal(product) {
-    modalBodyEl.innerHTML = `
-        <div class="modal-grid">
-            <img src="${product.thumbnail}" alt="${product.title}" class="modal-image">
-            <div class="modal-info">
-                <span class="product-category">${product.category}</span>
-                <h3>${product.title}</h3>
-                <p class="modal-brand">Бренд: <strong>${product.brand || 'Не вказано'}</strong></p>
-                <p class="modal-desc">${product.description}</p>
-                <div class="modal-meta">
-                    <span class="product-price">$${product.price}</span>
-                    <span class="product-rating">★ ${product.rating}</span>
-                    <span>Наявність: ${product.stock} шт.</span>
-                </div>
-            </div>
-        </div>
-    `;
-    modalEl.classList.remove('hidden');
-}
-
-function closeProductModal() {
-    modalEl.classList.add('hidden');
-}
-
-async function fetchProducts() {
+async function fetchCategories() {
     try {
-        const res = await fetch(`${API_BASE}/products?limit=100`);
+        setStatus("Завантаження категорій...");
+        const res = await fetch(`${BASE_URL}/products/categories`);
         if (!res.ok) {
-            throw new Error(`Помилка HTTP: ${res.status}`);
+            throw new Error(`Помилка завантаження категорій: ${res.status}`);
         }
-        const data = await res.json();
-        const products = Array.isArray(data) ? data : data.products;
 
-        console.log('All products:', data);
-        setActiveCategoryUI(null);
-        renderProducts(products, 'Усі товари');
-        return products;
+        const categories = await res.json();
+        console.log("Categories:", categories);
+        renderCategories(categories);
+        return categories;
     } catch (error) {
-        console.error('Помилка під час завантаження товарів:', error);
-        updateHeaderCount(0, true);
+        console.error(error);
+        setStatus("Не вдалося завантажити категорії.");
+        categoriesListEl.innerHTML = `<li class="empty-state">Помилка завантаження категорій</li>`;
+    }
+}
+
+async function fetchProducts(limit = 0) {
+    try {
+        setStatus("Завантаження всіх товарів...");
+        const url = `${BASE_URL}/products?limit=${limit}`;
+        const res = await fetch(url);
+        if (!res.ok) {
+            throw new Error(`Помилка завантаження товарів: ${res.status}`);
+        }
+
+        const data = await res.json();
+        console.log("All products:", data);
+
+        setActiveCategoryButton(null);
+        renderProducts(data.products, "Усі товари");
+        setStatus("Дані успішно завантажено");
+        return data.products;
+    } catch (error) {
+        console.error(error);
+        setStatus("Помилка під час завантаження товарів.");
+        productsGridEl.innerHTML = `<p class="empty-state">Не вдалося завантажити товари.</p>`;
+    }
+}
+
+async function fetchProductsByCategory(categorySlug, categoryLabel = categorySlug) {
+    try {
+        setStatus(`Завантаження категорії "${categoryLabel}"...`);
+        const res = await fetch(`${BASE_URL}/products/category/${encodeURIComponent(categorySlug)}`);
+        if (!res.ok) {
+            throw new Error(`Помилка завантаження категорії ${categorySlug}: ${res.status}`);
+        }
+
+        const data = await res.json();
+        console.log(`Products in ${categorySlug}:`, data);
+
+        setActiveCategoryButton(categorySlug);
+        renderProducts(data.products, `Категорія: ${categoryLabel}`);
+        setStatus(`Відображено категорію "${categoryLabel}"`);
+        return data.products;
+    } catch (error) {
+        console.error(error);
+        setStatus("Помилка під час завантаження товарів категорії.");
+        productsGridEl.innerHTML = `<p class="empty-state">Не вдалося завантажити товари цієї категорії.</p>`;
     }
 }
 
 async function fetchProductById(id) {
     try {
-        const res = await fetch(`${API_BASE}/products/${id}`);
+        const res = await fetch(`${BASE_URL}/products/${id}`);
         if (!res.ok) {
-            throw new Error(`Помилка HTTP: ${res.status}`);
+            throw new Error(`Помилка завантаження товару з id=${id}: ${res.status}`);
         }
-        const product = await res.json();
 
-        console.log('Product by id:', product);
-        openProductModal(product);
+        const product = await res.json();
+        console.log(`Product #${id}:`, product);
         return product;
     } catch (error) {
-        console.error(`Помилка під час завантаження товару ${id}:`, error);
+        console.error(error);
     }
 }
 
-async function fetchCategories() {
-    try {
-        const res = await fetch(`${API_BASE}/products/categories`);
-        if (!res.ok) {
-            throw new Error(`Помилка HTTP: ${res.status}`);
-        }
-        const categories = await res.json();
-
-        console.log('Categories:', categories);
-        renderCategories(categories);
-        return categories;
-    } catch (error) {
-        console.error('Помилка під час завантаження категорій:', error);
-    }
+if (seeAllBtnEl) {
+    seeAllBtnEl.addEventListener("click", () => {
+        fetchProducts(0);
+    });
 }
 
-async function fetchProductsByCategory(slug, categoryName) {
-    try {
-        const res = await fetch(`${API_BASE}/products/category/${encodeURIComponent(slug)}`);
-        if (!res.ok) {
-            throw new Error(`Помилка HTTP: ${res.status}`);
-        }
-        const data = await res.json();
-        const products = Array.isArray(data) ? data : data.products;
-
-        console.log(`Products in category ${slug}:`, data);
-        setActiveCategoryUI(slug);
-        renderProducts(products, `Категорія: ${categoryName}`);
-        return products;
-    } catch (error) {
-        console.error(`Помилка під час завантаження категорії ${slug}:`, error);
-        updateHeaderCount(0, true);
-    }
+async function initApp() {
+    await Promise.all([
+        fetchCategories(),
+        fetchProducts(0)
+    ]);
 }
 
-seeAllBtnEl.addEventListener('click', () => {
-    fetchProducts();
-});
-
-closeModalBtnEl.addEventListener('click', closeProductModal);
-
-modalEl.addEventListener('click', (event) => {
-    if (event.target === modalEl) {
-        closeProductModal();
-    }
-});
-
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape' && !modalEl.classList.contains('hidden')) {
-        closeProductModal();
-    }
-});
-
-// Під час завантаження сайту робимо запити на категорії та всі товари
-Promise.all([fetchCategories(), fetchProducts()]);
+initApp();

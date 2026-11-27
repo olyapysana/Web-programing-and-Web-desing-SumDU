@@ -4,36 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог товарів — DummyJSON</title>
+    <title>Каталог товарів </title>
     <link rel="stylesheet" href="style.css">
     <script src="index.js" defer></script>
 </head>
 <body>
     <header class="header">
         <h1>Каталог товарів</h1>
-        <p id="status-text" class="status-text">Товарів: 0</p>
+        <p id="status-text" class="status-text">Завантаження даних...</p>
     </header>
 
     <main class="layout">
         <aside class="sidebar">
-            <section class="categories-box" aria-label="Список категорій">
+            <section class="categories-box">
                 <h2>Категорії</h2>
                 <ul id="categories-list" class="categories-list"></ul>
             </section>
 
-            <button id="see-all-btn" type="button" class="see-all-btn">
+            <button id="see-all-btn" class="see-all-btn" type="button">
                 See all products
             </button>
         </aside>
 
-        <section class="products-panel" aria-label="Товари">
+        <div class="flow-arrow" aria-hidden="true">➔</div>
+
+        <section class="products-panel">
             <div class="products-header">
-                <h2 id="products-heading">Усі товари</h2>
+                <h2 id="products-title">Усі товари</h2>
                 <span id="products-count" class="products-count"></span>
             </div>
             <div id="products-grid" class="products-grid"></div>
         </section>
     </main>
+</body>
+</html>
 
     <div id="product-modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-content">
